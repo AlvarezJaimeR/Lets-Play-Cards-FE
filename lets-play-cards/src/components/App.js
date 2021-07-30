@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import {Switch, Route} from "react-router-dom";
 import axios from "axios";
+import Register from "./Register/Register";
 
 function App() {
   const [totalUsers, setTotalUsers] = useState([]);
@@ -31,6 +32,11 @@ function App() {
                 </h2>
             </div>
           )})}
+        </div>
+        <div>
+          <Switch>
+            <Route path="/register" component={Register}/>
+          </Switch>
         </div>
     </div>
     ) : (
