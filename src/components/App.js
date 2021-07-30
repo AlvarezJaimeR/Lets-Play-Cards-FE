@@ -3,6 +3,7 @@ import {Switch, Route} from "react-router-dom";
 import axios from "axios";
 import Register from "./Register/Register";
 import Login from "./Login/Login";
+import Game from "./Game/Game";
 
 function App() {
   const [totalUsers, setTotalUsers] = useState([]);
@@ -14,7 +15,6 @@ function App() {
   async function onLoad() {
     await axios.get("http://localhost:5000/api/users/")
       .then((response) => {
-        console.log("all users", response.data);
         setTotalUsers(response.data);
       });
   }
@@ -38,6 +38,7 @@ function App() {
           <Switch>
             <Route path="/register" component={Register}/>
             <Route path="/login" component={Login}/>
+            <Route path="/game" component={Game}/>
           </Switch>
         </div>
     </div>
