@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import {Switch, Route} from "react-router-dom";
 import axios from "axios";
 import Register from "./Register/Register";
+import Login from "./Login/Login";
 
 function App() {
   const [totalUsers, setTotalUsers] = useState([]);
@@ -36,6 +37,7 @@ function App() {
         <div>
           <Switch>
             <Route path="/register" component={Register}/>
+            <Route path="/login" component={Login}/>
           </Switch>
         </div>
     </div>
