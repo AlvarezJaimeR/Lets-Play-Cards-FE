@@ -2,15 +2,23 @@ import React from "react";
 import axios from "axios";
 import UseForm from "../UseForm/UseForm";
 import { Link } from "react-router-dom";
+import { useAppContext } from "../../libs/contextLib";
+import { useHistory } from "react-router-dom";
 
 const Login = () => {
 	const { values, handleChange, handleSubmit } = UseForm(login);
-//After login, take the user to home page and set token valeu in isAuthenticated variable from localStorage
+	const { setJwt, userHasAuthenticated } = useAppContext();
+	const history = useHistory();
+
+	//After login, take the user to home page and set token valeu in isAuthenticated variable from localStorage
 	async function login() {
 		await axios
 			.post("http://localhost:5000/api/auth", values)
 			.then((response) => {
 				localStorage.setItem("token", response.data);
+				userHasAuthenticated(true);
+				setJwt(localStorage.getItem("token"));
+				history.push("/home");
 			})
 			.catch((error) => {
 				console.log(error);
@@ -31,6 +39,7 @@ const Login = () => {
 				<span>Password</span>
 				<input
 					name="password"
+					type="password"
 					value={values.password || ""}
 					onChange={handleChange}
 				/>
@@ -39,8 +48,9 @@ const Login = () => {
 				</button>
 			</form>
 
-
-			<Link to="/home"><button className="btn btn-dark">Back to Home </button></Link>
+			<Link to="/home">
+				<button className="btn btn-dark">Back to Home </button>
+			</Link>
 		</div>
 	);
 };

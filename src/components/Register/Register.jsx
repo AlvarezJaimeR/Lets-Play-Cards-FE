@@ -1,10 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import axios from "axios";
 import UseForm from "../UseForm/UseForm";
-import {Link} from 'react-router-dom'
+import { Link } from "react-router-dom";
+import { useAppContext } from "../../libs/contextLib";
+import { useHistory } from "react-router-dom";
 
 const Register = () => {
 	const { errors, values, handleChange, handleSubmit } = UseForm(register);
+	const { userHasAuthenticated, setLoggedInUser } = useAppContext();
+	const history = useHistory();
 
 	async function register() {
 		console.log("register button!");
@@ -15,6 +19,9 @@ const Register = () => {
 			.post("http://localhost:5000/api/users/", users)
 			.then((response) => {
 				localStorage.setItem("token", response.headers["x-auth-token"]);
+				userHasAuthenticated(true);
+				setLoggedInUser(response.data);
+				history.push("/home");
 			})
 			.catch((error) => {
 				console.log(error);
@@ -61,7 +68,7 @@ const Register = () => {
 					value={values.confirmPassword || ""}
 					onChange={handleChange}
 					name="confirmPassword"
-					type="confirmPassword"
+					type="password"
 					id="confirmPassword"
 					required={true}
 				/>
@@ -75,7 +82,9 @@ const Register = () => {
 				</div>
 			</form>
 
-			<Link to="/home"><button className="btn btn-dark">Back to Home</button> </Link>
+			<Link to="/home">
+				<button className="btn btn-dark">Back to Home</button>{" "}
+			</Link>
 		</div>
 	);
 };

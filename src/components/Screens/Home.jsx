@@ -1,106 +1,113 @@
-import React, {useState, useEffect, Fragment} from 'react'
-import './screens.css'
-import axios from 'axios'
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect, Fragment } from "react";
+import "./screens.css";
+import axios from "axios";
+import { Link } from "react-router-dom";
+import { useAppContext } from "../../libs/contextLib";
+import { useHistory } from "react-router-dom";
 
+function Home() {
+	const [totalUsers, setTotalUsers] = useState([]);
+	const { isAuthenticated, userHasAuthenticated } = useAppContext();
+	const history = useHistory();
 
-function Home()
-{
-    
-    const [totalUsers, setTotalUsers] = useState([]);
-    const [isAuthenticated, setIsAuthenticated]= useState(null)
+	useEffect(() => {
+		onLoad();
+	}, []);
 
-  useEffect(() =>
-  {
-    onLoad();
-  }, []);
+	async function onLoad() {
+		await axios.get("http://localhost:5000/api/users/").then((response) => {
+			setTotalUsers(response.data);
+		});
+	}
 
-  async function onLoad()
-  {
-    await axios.get("http://localhost:5000/api/users/")
-      .then((response) =>
-      {
-        setTotalUsers(response.data);
-      });
-  }
+	function loggingOut() {
+		try {
+			console.log("logging out...");
+			localStorage.removeItem("token");
+			userHasAuthenticated(false);
+			history.pushState("/home");
+		} catch (err) {
+			console.log(err);
+		}
+	}
 
-    return (<Fragment>
-        <div className="home">{/* Landing Page */}
-            
-            <div className="homepage-sections">
-                <h1>👑 Let's Play Cards</h1>
-                <div className="image-div">
-                    <img className="home-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Kings_in_Deck_of_Cards.jpg/220px-Kings_in_Deck_of_Cards.jpg" alt="deck-of-cards"/>
-                </div>
-               
-            </div>
-        
-            <div className="homepage-sections">
-                {totalUsers.length > 0 ? (
-                <div className="registered-users">
-                    <h7>Registered Users</h7>
-                    {totalUsers.map((user, index) =>
-                    {
-                        return (
-                        <div
-                            key={index}>
-                            <p>
-                            {user.userName}
-                            </p>
-                            </div>
-                            )
-                            })}
-                        </div>)
-                        : (
-                        <div>
-                            <h2>Loading...</h2>
-                        </div>
-                    )}    
-            </div>
-            
-        </div>{
-            isAuthenticated ? <PlayLinks/> : <AuthLinks/>
-        }
-        
-    </Fragment>
-        
-    )
+	return (
+		<Fragment>
+			<div className="home">
+				{/* Landing Page */}
+
+				<div className="homepage-sections">
+					<h1>👑 Let's Play Cards</h1>
+					<div className="image-div">
+						<img
+							className="home-img"
+							src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Kings_in_Deck_of_Cards.jpg/220px-Kings_in_Deck_of_Cards.jpg"
+							alt="deck-of-cards"
+						/>
+					</div>
+				</div>
+
+				<div className="homepage-sections">
+					{totalUsers.length > 0 ? (
+						<div className="registered-users">
+							<h7>Registered Users</h7>
+							{totalUsers.map((user, index) => {
+								return (
+									<div key={index}>
+										<p>{user.userName}</p>
+									</div>
+								);
+							})}
+						</div>
+					) : (
+						<div>
+							<h2>Loading...</h2>
+						</div>
+					)}
+				</div>
+			</div>
+			{isAuthenticated ? <PlayLinks /> : <AuthLinks />}
+			{isAuthenticated ? (
+				<button className="btn btn-danger" onClick={() => loggingOut()}>
+					Logout
+				</button>
+			) : (
+				<div></div>
+			)}
+		</Fragment>
+	);
 }
 
+function AuthLinks() {
+	return (
+		<div className="play-container">
+			<Link to="/register">
+				<button className="btn btn-light">Register to Play</button>
+			</Link>
 
-function AuthLinks (){
-    return (
-        <div className="play-container">
-                
-                    <Link to="/register">
-                    <button className="btn btn-light">
-                        Register to Play
-                    </button></Link>
-                
-             
-                    <Link to="/login">
-                         <button className="btn btn-dark">Login to Play</button>
-                   </Link>                
-            </div>
-    )
+			<Link to="/login">
+				<button className="btn btn-dark">Login to Play</button>
+			</Link>
+
+			<Link to="/game">
+				<button className="btn btn-success">Let's Play!</button>
+			</Link>
+		</div>
+	);
 }
 
-function PlayLinks()
-{  return (
-    <div className="play-container">
-            
-                <Link to="/register">
-                <button className="btn btn-light">
-                   Vs AI
-                </button></Link>
-            
-         
-                <Link to="/login">
-                     <button className="btn btn-dark">vs Online Player</button>
-               </Link>                
-        </div>
-)
-    
+function PlayLinks() {
+	return (
+		<div className="play-container">
+			<Link to="/register">
+				<button className="btn btn-light">Vs AI</button>
+			</Link>
+
+			<Link to="/login">
+				<button className="btn btn-dark">vs Online Player</button>
+			</Link>
+		</div>
+	);
 }
 
-export default Home
+export default Home;
