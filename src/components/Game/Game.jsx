@@ -21,7 +21,7 @@ const Game = () => {
         .then(response => axios.get(`https://deckofcardsapi.com/api/deck/${response.data.deck_id}/draw/?count=1`))
         .then(response => {
 
-          setCardDraw(response.data.cards);
+          setCardDraw(response.data.cards[0].code);
         })
         .then(response => {
           console.log(cardDraw);
@@ -33,6 +33,15 @@ const Game = () => {
     grab();
 
   }, [setCardDraw, setCardDraw]);
+
+  async function drawOne() {
+    let response = await axios.get(
+      `https://deckofcardsapi.com/api/deck/${cardGrab.deck_id}/draw/?count=1`
+    )
+      .then(response => {
+        setCardDraw(response.data.cards[0].code);
+      })
+  }
 
   return (
     cardGrab && cardDraw ? (
@@ -47,10 +56,12 @@ const Game = () => {
         Shuffled? {cardGrab.shuffled ? "Yes" : "No"}
       </div>
 
-      <div>
-        Card? {cardDraw[0].code}
+      <div style={{marginTop: "20px", fontWeight: "bold"}}>
+        Card? {cardDraw}
       </div>
-
+      <button onClick={drawOne} variant="primary">
+        Draw
+      </button>
 
 
     </div>
