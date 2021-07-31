@@ -1,10 +1,11 @@
 import React from "react";
 import axios from "axios";
 import UseForm from "../UseForm/UseForm";
+import { Link } from "react-router-dom";
 
 const Login = () => {
 	const { values, handleChange, handleSubmit } = UseForm(login);
-
+//After login, take the user to home page and set token valeu in isAuthenticated variable from localStorage
 	async function login() {
 		await axios
 			.post("http://localhost:5000/api/auth", values)
@@ -37,6 +38,9 @@ const Login = () => {
 					Submit
 				</button>
 			</form>
+
+
+			<Link to="/home"><button className="btn btn-dark">Back to Home </button></Link>
 		</div>
 	);
 };

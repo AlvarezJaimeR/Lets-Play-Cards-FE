@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import UseForm from "../UseForm/UseForm";
+import {Link} from 'react-router-dom'
 
 const Register = () => {
 	const { errors, values, handleChange, handleSubmit } = UseForm(register);
@@ -73,6 +74,8 @@ const Register = () => {
 					</button>
 				</div>
 			</form>
+
+			<Link to="/home"><button className="btn btn-dark">Back to Home</button> </Link>
 		</div>
 	);
 };
