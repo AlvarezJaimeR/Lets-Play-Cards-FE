@@ -31,7 +31,7 @@ function App() {
                   {user.userName}
                 </h2>
             </div>
-          )})}
+          )})} 
         </div>
         <div>
           <Switch>
