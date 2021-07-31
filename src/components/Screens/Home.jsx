@@ -20,14 +20,18 @@ function Home() {
 		});
 	}
 
-	function loggingOut() {
-		try {
-			console.log("logging out...");
-			localStorage.removeItem("token");
-			userHasAuthenticated(false);
-			history.pushState("/home");
-		} catch (err) {
-			console.log(err);
+	function buttonSelection(event) {
+		switch (event.target.name) {
+			case "logout":
+				try {
+					console.log("logging out...");
+					localStorage.removeItem("token");
+					userHasAuthenticated(false);
+					history.pushState("/home");
+				} catch (err) {
+					console.log(err);
+				}
+				break;
 		}
 	}
 
@@ -66,47 +70,31 @@ function Home() {
 					)}
 				</div>
 			</div>
-			{isAuthenticated ? <PlayLinks /> : <AuthLinks />}
 			{isAuthenticated ? (
-				<button className="btn btn-danger" onClick={() => loggingOut()}>
-					Logout
-				</button>
+				<div className="play-container">
+					<button className="btn btn-light">Vs AI</button>
+					<button className="btn btn-dark">vs Online Player</button>
+					<button
+						className="btn btn-danger"
+						name="logout"
+						onClick={(event) => buttonSelection(event)}>
+						Logout
+					</button>
+				</div>
 			) : (
-				<div></div>
+				<div className="play-container">
+					<Link to="/register">
+						<button className="btn btn-light">Register to Play</button>
+					</Link>
+					<Link to="/login">
+						<button className="btn btn-dark">Login to Play</button>
+					</Link>
+					<Link to="/game">
+						<button className="btn btn-success">Let's Play!</button>
+					</Link>
+				</div>
 			)}
 		</Fragment>
-	);
-}
-
-function AuthLinks() {
-	return (
-		<div className="play-container">
-			<Link to="/register">
-				<button className="btn btn-light">Register to Play</button>
-			</Link>
-
-			<Link to="/login">
-				<button className="btn btn-dark">Login to Play</button>
-			</Link>
-
-			<Link to="/game">
-				<button className="btn btn-success">Let's Play!</button>
-			</Link>
-		</div>
-	);
-}
-
-function PlayLinks() {
-	return (
-		<div className="play-container">
-			<Link to="/register">
-				<button className="btn btn-light">Vs AI</button>
-			</Link>
-
-			<Link to="/login">
-				<button className="btn btn-dark">vs Online Player</button>
-			</Link>
-		</div>
 	);
 }
 
