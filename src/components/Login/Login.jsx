@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import UseForm from "../UseForm/UseForm";
+import { Link } from "react-router-dom";
 
 const Login = () => {
 	const { values, handleChange, handleSubmit } = UseForm(login);
@@ -37,6 +38,9 @@ const Login = () => {
 					Submit
 				</button>
 			</form>
+
+
+			<Link to="/home"><button className="btn btn-dark">Back to Home </button></Link>
 		</div>
 	);
 };
