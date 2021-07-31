@@ -4,7 +4,7 @@ import UseForm from "../UseForm/UseForm";
 
 const Login = () => {
 	const { values, handleChange, handleSubmit } = UseForm(login);
-
+//After login, take the user to home page and set token valeu in isAuthenticated variable from localStorage
 	async function login() {
 		await axios
 			.post("http://localhost:5000/api/auth", values)
