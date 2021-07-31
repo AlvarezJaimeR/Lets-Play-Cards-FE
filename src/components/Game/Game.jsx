@@ -18,21 +18,11 @@ const Game = () => {
 
           return response
         })
-        .then(response => axios.get(`https://deckofcardsapi.com/api/deck/${response.data.deck_id}/draw/?count=1`))
-        .then(response => {
-
-          setCardDraw(response.data.cards[0].code);
-        })
-        .then(response => {
-          console.log(cardDraw);
-        })
-
-
 
     };
     grab();
 
-  }, [setCardDraw, setCardDraw]);
+  }, []);
 
   async function drawOne() {
     let response = await axios.get(
@@ -44,7 +34,7 @@ const Game = () => {
   }
 
   return (
-    cardGrab && cardDraw ? (
+    cardGrab ? (
     <div>
       <div>
         Deck ID: {cardGrab.deck_id}
