@@ -17,7 +17,28 @@ const Login = () => {
 			});
 	}
 
-	return <div></div>;
+	return (
+		<div className="container">
+			<h1 className="login-title">User Login</h1>
+			<form onSubmit={handleSubmit}>
+				<span>Email</span>
+				<input
+					name="email"
+					value={values.email || ""}
+					onChange={handleChange}
+				/>
+				<span>Password</span>
+				<input
+					name="password"
+					value={values.password || ""}
+					onChange={handleChange}
+				/>
+				<button type="submit" className="btn btn-primary-success">
+					Submit
+				</button>
+			</form>
+		</div>
+	);
 };
 
 export default Login;
