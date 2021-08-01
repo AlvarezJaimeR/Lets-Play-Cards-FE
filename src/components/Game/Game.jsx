@@ -25,7 +25,6 @@ const Game = () => {
   const [playerOneScore, setPlayerOneScore] = useState(0);
   const [playerTwoScore, setPlayerTwoScore] = useState(0);
 
-  console.log(loggedInUser);
 
 
   useEffect(() => {
@@ -119,7 +118,6 @@ const Game = () => {
         setCardRemains(response.data.remaining);
       })
       .then(() => {
-
       })
       .then(() => {
         scoreCompare();
@@ -167,7 +165,9 @@ const Game = () => {
         <div className="game-container">
 
         <div className="d-flex card-sections">
+
           <strong>Player 1: {loggedInUser.userName} </strong>
+
           <h2>Score: {playerOneScore}</h2>
           <img className="card card1" src={cardOneImage} alt="" />
 
