@@ -7,6 +7,7 @@ import Login from "./Login/Login";
 import Game from "./Game/Game";
 import {AppContext} from "../libs/contextLib";
 import jwtDecode from "jwt-decode";
+import PrivateRoute from  './Components/Routing/PrivateRoute';
 
 function App(){
   const [loggedInUser, setLoggedInUser] = useState();
@@ -61,7 +62,8 @@ function App(){
         headers,
         setHeaders,
       }}>
-        <Switch>
+          <Switch>
+          <PrivateRoute exact path="/" component={Home} />
           <Route path="/home" component={Home}/>
            <Route path="/register" component={Register} />
           <Route path="/login" component={Login} />
