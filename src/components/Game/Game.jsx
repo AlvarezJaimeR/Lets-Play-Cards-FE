@@ -5,9 +5,13 @@ import axios from "axios";
 const Game = () => {
 
   const [deckGrab, setDeckGrab] = useState(null);
-  const [cardDraw, setCardDraw] = useState(null);
   const [cardRemains, setCardRemains] = useState(null);
-  const [cardImage, setCardImage] = useState(null);
+
+  const [cardOneDraw, setCardOneDraw] = useState(null);
+  const [cardOneImage, setCardOneImage] = useState(null);
+
+  const [cardTwoDraw, setCardTwoDraw] = useState(null);
+  const [cardTwoImage, setCardTwoImage] = useState(null);
 
   useEffect(() => {
 
@@ -28,12 +32,17 @@ const Game = () => {
 
   async function drawOne() {
     let response = await axios.get(
-      `https://deckofcardsapi.com/api/deck/${deckGrab.deck_id}/draw/?count=1`
+      `https://deckofcardsapi.com/api/deck/${deckGrab.deck_id}/draw/?count=2`
     )
       .then(response => {
         console.log(response.data);
-        setCardDraw(response.data.cards[0].code);
-        setCardImage(response.data.cards[0].image);
+        setCardOneDraw(response.data.cards[0].code);
+        setCardOneImage(response.data.cards[0].image);
+
+        setCardTwoDraw(response.data.cards[1].code);
+        setCardTwoImage(response.data.cards[1].image);
+
+
         setCardRemains(response.data.remaining)
       })
   }
@@ -52,15 +61,30 @@ const Game = () => {
       </div>
 
       <div>
-        <div>
-          Cards remaining: {cardRemains}
+        Cards remaining: {cardRemains}
+      </div>
+
+      <div className="d-flex">
+
+        <div className="d-flex">
+          <h1>Player 1</h1>
+          <img src={cardOneImage} alt="" />
+
+          <div style={{marginTop: "20px", fontWeight: "bold"}}>
+            Card? {cardOneDraw}
+          </div>
+
+        </div>
+        <div className="d-flex">
+          <h1>Player 2</h1>
+          <img src={cardTwoImage} alt="" />
+
+          <div style={{marginTop: "20px", fontWeight: "bold"}}>
+            Card? {cardTwoDraw}
+          </div>
+
         </div>
 
-        <img src={cardImage} alt="" />
-
-        <div style={{marginTop: "20px", fontWeight: "bold"}}>
-          Card? {cardDraw}
-        </div>
       </div>
 
 
