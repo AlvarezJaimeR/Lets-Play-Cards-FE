@@ -72,8 +72,12 @@ function Home() {
 			</div>
 			{isAuthenticated ? (
 				<div className="play-container">
-					<button className="btn btn-light">Vs AI</button>
-					<button className="btn btn-dark">vs Online Player</button>
+					<Link to="/game">
+						<button className="btn btn-success">Lets play Vs AI</button>
+					</Link>
+					<Link to="/multiplayer">
+						<button className="btn btn-dark">vs Online Player</button>
+					</Link>
 					<button
 						className="btn btn-danger"
 						name="logout"
@@ -89,9 +93,7 @@ function Home() {
 					<Link to="/login">
 						<button className="btn btn-dark">Login to Play</button>
 					</Link>
-					<Link to="/game">
-						<button className="btn btn-success">Let's Play!</button>
-					</Link>
+					
 				</div>
 			)}
 		</Fragment>
