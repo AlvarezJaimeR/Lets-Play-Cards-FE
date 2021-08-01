@@ -27,23 +27,24 @@ const Login = () => {
 	}
 
 	return (
-		<div className="container">
+		<div className="container form-group">
 			<h1 className="login-title">User Login</h1>
-			<form onSubmit={handleSubmit}>
-				<span>Email</span>
-				<input
+			<form onSubmit={handleSubmit} className="container">
+				<label className="form-label">Email </label>
+				<input className="form-control"
 					name="email"
 					value={values.email || ""}
 					onChange={handleChange}
 				/>
-				<span>Password</span>
+				<label>Password</label>
 				<input
 					name="password"
 					type="password"
 					value={values.password || ""}
+					className="form-control"
 					onChange={handleChange}
 				/>
-				<button type="submit" className="btn btn-primary-success">
+				<button type="submit" className="btn btn-primary" style={{margin:'20px'}}>
 					Submit
 				</button>
 			</form>

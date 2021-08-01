@@ -30,10 +30,10 @@ const Register = () => {
 	}
 
 	return (
-		<div className="container">
+		<div className="container form-group">
 			<h1 className="form-title">Registration</h1>
 			<form onSubmit={handleSubmit}>
-				<span>Username</span>
+				<label>Username</label>
 				<input
 					value={values.userName || ""}
 					onChange={handleChange}
@@ -41,8 +41,9 @@ const Register = () => {
 					type="text"
 					id="userName"
 					required={true}
+					className="form-control"
 				/>
-				<span>Email</span>
+				<label>Email</label>
 				<input
 					value={values.email || ""}
 					onChange={handleChange}
@@ -50,8 +51,9 @@ const Register = () => {
 					type="email"
 					id="email"
 					required={true}
+					className="form-control"
 				/>
-				<span>Password</span>
+				<label>Password</label>
 				<input
 					value={values.password || ""}
 					onChange={handleChange}
@@ -59,11 +61,12 @@ const Register = () => {
 					type="password"
 					id="password"
 					required={true}
+					className="form-control"
 				/>
 				<p className="errors">
 					{errors.password ? `${errors.password}` : null}
 				</p>
-				<span>Confirm Password</span>
+				<label>Confirm Password</label>
 				<input
 					value={values.confirmPassword || ""}
 					onChange={handleChange}
@@ -71,12 +74,13 @@ const Register = () => {
 					type="password"
 					id="confirmPassword"
 					required={true}
+					className="form-control"
 				/>
 				<p className="errors">
 					{errors.confirmPassword ? `${errors.confirmPassword}` : null}
 				</p>
 				<div>
-					<button type="submit" className="btn btn-outline-primary">
+					<button type="submit" className="btn btn-primary" style={{margin:'20px'}}>
 						Submit
 					</button>
 				</div>

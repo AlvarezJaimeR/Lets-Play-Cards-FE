@@ -1,8 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import './game.css';
 import axios from "axios";
+import { Link } from "react-router-dom";
+import { useAppContext } from "../../libs/contextLib";
+import { useHistory } from "react-router-dom";
 
-const Game = () => {
+const Game = () =>
+{
+  const { isAuthenticated, userHasAuthenticated } = useAppContext();
+	const history = useHistory();
 
   const [deckGrab, setDeckGrab] = useState(null);
   const [cardRemains, setCardRemains] = useState(null);
@@ -30,6 +36,24 @@ const Game = () => {
 
   }, []);
 
+  // To Quit Game
+  function buttonSelection(event) {
+		switch (event.target.name) {
+			case "logout":
+				try {
+					console.log("logging out...");
+					localStorage.removeItem("token");
+					userHasAuthenticated(false);
+          
+          history.push("/home")
+				} catch (err) {
+					console.log(err);
+				}
+				break;
+		}
+	}
+
+
   async function drawOne() {
     let response = await axios.get(
       `https://deckofcardsapi.com/api/deck/${deckGrab.deck_id}/draw/?count=2`
@@ -51,33 +75,40 @@ const Game = () => {
 
   return (
     deckGrab ? (
-    <div>
       <div>
-        Deck ID: {deckGrab.deck_id}
-      </div>
+        <div className="game-details-container">
+          <div className="btn btn-block">
+            <strong> Deck ID:</strong>  {deckGrab.deck_id}
+          </div>
+          <div className="btn btn-block">
+            <strong>Shuffled ?</strong> {deckGrab.shuffled ? "Yes" : "No"}
+          </div>
+          <div className="btn btn-block">
+            <strong>Cards remaining:</strong> {cardRemains}
+          </div>
+          <button
+						className="btn btn-block btn-sm"
+						name="logout"
+						onClick={(event) => buttonSelection(event)}>
+						⛔ Quit Game ⛔ 
+					</button>
+        </div>
+     
 
-      <div>
-        Shuffled? {deckGrab.shuffled ? "Yes" : "No"}
-      </div>
+        <div className="game-container">
 
-      <div>
-        Cards remaining: {cardRemains}
-      </div>
-
-      <div className="d-flex">
-
-        <div className="d-flex">
-          <h1>Player 1</h1>
-          <img src={cardOneImage} alt="" />
+        <div className="d-flex card-sections">
+          <strong>Player 1</strong>
+          <img className="card card1" src={cardOneImage} alt="" />
 
           <div style={{marginTop: "20px", fontWeight: "bold"}}>
             Card? {cardOneDraw}
           </div>
 
         </div>
-        <div className="d-flex">
-          <h1>Player 2</h1>
-          <img src={cardTwoImage} alt="" />
+        <div className="d-flex card-sections">
+          <strong>AI</strong>
+          <img  className="card card2" src={cardTwoImage} alt="" />
 
           <div style={{marginTop: "20px", fontWeight: "bold"}}>
             Card? {cardTwoDraw}
@@ -87,10 +118,12 @@ const Game = () => {
 
       </div>
 
-
-      <button onClick={drawOne} variant="primary">
+        <div className="draw-button">
+          <button onClick={drawOne} variant="primary" className="btn btn-primary">
         Draw
       </button>
+</div>
+      
 
 
     </div>

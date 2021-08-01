@@ -1,0 +1,46 @@
+.game-details-container {
+    width: 98%;
+    display: flex;
+    border: 2px solid red;
+    margin: 10px;
+}
+
+.card-sections {
+    width: 50%;
+    float: left;
+    padding: 20px;
+    border: 2px solid red;
+    margin: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+.game-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.d-flex {
+    display: flex;
+    flex-direction: column
+}
+
+.card {
+    width: 300px;
+    height: 400px;
+    padding: 10px;
+}
+
+.card1 {
+    background-image: url('../../images/blue\ card\ deck.jpeg');
+}
+
+.card2 {
+    background-image: url('../../images/red\ card\ deck.jpeg')
+}
+
+.draw-button {
+    padding: 1% 45%;
+    width: 100%;
+    border: 2px solid red;
+}

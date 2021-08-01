@@ -54,7 +54,7 @@ function Home() {
 				<div className="homepage-sections">
 					{totalUsers.length > 0 ? (
 						<div className="registered-users">
-							<h7>Registered Users</h7>
+							<h3>Registered Users</h3>
 							{totalUsers.map((user, index) => {
 								return (
 									<div key={index}>
