@@ -1,24 +1,29 @@
-import React, { useState, useEffect, Fragment } from "react";
+import React, {  useEffect, Fragment } from "react";
 import "./screens.css";
-import axios from "axios";
+
 import { Link } from "react-router-dom";
-import { useAppContext } from "../../libs/contextLib";
+import AuthContext  from "../../libs/contextLib";
 import { useHistory } from "react-router-dom";
 
 function Home() {
-	const [totalUsers, setTotalUsers] = useState([]);
-	const { isAuthenticated, userHasAuthenticated } = useAppContext();
+	
+	const {
+		isAuthenticated,
+		userHasAuthenticated,
+		totalUsers,
+		loadUser,
+		onLoad,
+		 } = AuthContext();
 	const history = useHistory();
 
-	useEffect(() => {
+	useEffect(() =>
+	{
 		onLoad();
+		loadUser();
+		//eslint-disable-next-line 
 	}, []);
 
-	async function onLoad() {
-		await axios.get("http://localhost:5000/api/users/").then((response) => {
-			setTotalUsers(response.data);
-		});
-	}
+	
 
 	function buttonSelection(event) {
 		switch (event.target.name) {
@@ -54,7 +59,7 @@ function Home() {
 				<div className="homepage-sections">
 					{totalUsers.length > 0 ? (
 						<div className="registered-users">
-							<h7>Registered Users</h7>
+							<h3>Registered Users</h3>
 							{totalUsers.map((user, index) => {
 								return (
 									<div key={index}>
@@ -72,8 +77,12 @@ function Home() {
 			</div>
 			{isAuthenticated ? (
 				<div className="play-container">
-					<button className="btn btn-light">Vs AI</button>
-					<button className="btn btn-dark">vs Online Player</button>
+					<Link to="/game">
+						<button className="btn btn-success">Lets play Vs AI</button>
+					</Link>
+					<Link to="/multiplayer">
+						<button className="btn btn-dark">vs Online Player</button>
+					</Link>
 					<button
 						className="btn btn-danger"
 						name="logout"
@@ -89,9 +98,7 @@ function Home() {
 					<Link to="/login">
 						<button className="btn btn-dark">Login to Play</button>
 					</Link>
-					<Link to="/game">
-						<button className="btn btn-success">Let's Play!</button>
-					</Link>
+					
 				</div>
 			)}
 		</Fragment>

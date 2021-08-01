@@ -2,12 +2,12 @@ import React from "react";
 import axios from "axios";
 import UseForm from "../UseForm/UseForm";
 import { Link } from "react-router-dom";
-import { useAppContext } from "../../libs/contextLib";
+import  AuthContext  from "../../libs/contextLib";
 import { useHistory } from "react-router-dom";
 
 const Register = () => {
 	const { errors, values, handleChange, handleSubmit } = UseForm(register);
-	const { userHasAuthenticated, setLoggedInUser } = useAppContext();
+	const { userHasAuthenticated, setLoggedInUser } = AuthContext();
 	const history = useHistory();
 
 	async function register() {

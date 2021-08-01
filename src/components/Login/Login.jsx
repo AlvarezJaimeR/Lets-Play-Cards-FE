@@ -2,12 +2,12 @@ import React from "react";
 import axios from "axios";
 import UseForm from "../UseForm/UseForm";
 import { Link } from "react-router-dom";
-import { useAppContext } from "../../libs/contextLib";
+import  AuthContext  from "../../libs/contextLib";
 import { useHistory } from "react-router-dom";
 
 const Login = () => {
 	const { values, handleChange, handleSubmit } = UseForm(login);
-	const { setJwt, userHasAuthenticated } = useAppContext();
+	const { setJwt, userHasAuthenticated } = AuthContext();
 	const history = useHistory();
 
 	//After login, take the user to home page and set token valeu in isAuthenticated variable from localStorage
@@ -27,19 +27,20 @@ const Login = () => {
 	}
 
 	return (
-		<div className="container">
+		<div className="container form">
 			<h1 className="login-title">User Login</h1>
 			<form onSubmit={handleSubmit}>
-				<span>Email</span>
+				<span className="form-label">Email</span>
 				<input
 					name="email"
 					value={values.email || ""}
 					onChange={handleChange}
 				/>
-				<span>Password</span>
+				<span className="form-label">Password</span>
 				<input
 					name="password"
 					type="password"
+					className="form-input"
 					value={values.password || ""}
 					onChange={handleChange}
 				/>
