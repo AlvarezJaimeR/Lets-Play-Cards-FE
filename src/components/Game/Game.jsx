@@ -5,10 +5,11 @@ import { Link } from "react-router-dom";
 import { useAppContext } from "../../libs/contextLib";
 import { useHistory } from "react-router-dom";
 
-const Game = () =>
-{
+const Game = () => {
   const { isAuthenticated, userHasAuthenticated } = useAppContext();
+  const { loggedInUser, setLoggedInUser } = useAppContext();
 	const history = useHistory();
+
 
   const [deckGrab, setDeckGrab] = useState(null);
   const [cardRemains, setCardRemains] = useState(null);
@@ -23,7 +24,6 @@ const Game = () =>
 
   const [playerOneScore, setPlayerOneScore] = useState(0);
   const [playerTwoScore, setPlayerTwoScore] = useState(0);
-
 
 
 
@@ -118,11 +118,23 @@ const Game = () =>
         setCardRemains(response.data.remaining);
       })
       .then(() => {
-
       })
       .then(() => {
         scoreCompare();
       })
+  }
+
+  function gameOver() {
+    if (cardRemains === 0) {
+      if (playerOneScore > playerTwoScore) {
+        axios.put(`http://localhost:5000/api/${loggedInUser._id}/win`)
+      } else if (playerTwoScore > playerOneScore) {
+        axios.put(`http://localhost:5000/api/${loggedInUser._id}/lose`)
+      }
+      return true
+    } else {
+      return false
+    }
   }
 
 
@@ -146,13 +158,16 @@ const Game = () =>
 						onClick={(event) => buttonSelection(event)}>
 						⛔ Quit Game ⛔ 
 					</button>
+          {gameOver() ? <div>Game Over</div> : ""}
         </div>
      
 
         <div className="game-container">
 
         <div className="d-flex card-sections">
-          <strong>Player 1</strong>
+
+          <strong>Player 1: {loggedInUser.userName} </strong>
+
           <h2>Score: {playerOneScore}</h2>
           <img className="card card1" src={cardOneImage} alt="" />
 
