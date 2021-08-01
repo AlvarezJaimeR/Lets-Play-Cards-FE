@@ -4,8 +4,10 @@ import axios from "axios";
 
 const Game = () => {
 
-  const [cardGrab, setCardGrab] = useState(null);
+  const [deckGrab, setDeckGrab] = useState(null);
   const [cardDraw, setCardDraw] = useState(null);
+  const [cardRemains, setCardRemains] = useState(null);
+  const [cardImage, setCardImage] = useState(null);
 
   useEffect(() => {
 
@@ -14,7 +16,7 @@ const Game = () => {
         "https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1"
       )
         .then(response => {
-          setCardGrab(response.data);
+          setDeckGrab(response.data);
 
           return response
         })
@@ -26,29 +28,42 @@ const Game = () => {
 
   async function drawOne() {
     let response = await axios.get(
-      `https://deckofcardsapi.com/api/deck/${cardGrab.deck_id}/draw/?count=1`
+      `https://deckofcardsapi.com/api/deck/${deckGrab.deck_id}/draw/?count=1`
     )
       .then(response => {
+        console.log(response.data);
         setCardDraw(response.data.cards[0].code);
+        setCardImage(response.data.cards[0].image);
+        setCardRemains(response.data.remaining)
       })
   }
 
+
+
   return (
-    cardGrab ? (
+    deckGrab ? (
     <div>
       <div>
-        Deck ID: {cardGrab.deck_id}
-      </div>
-      <div>
-        Cards remaining: {cardGrab.remaining}
-      </div>
-      <div>
-        Shuffled? {cardGrab.shuffled ? "Yes" : "No"}
+        Deck ID: {deckGrab.deck_id}
       </div>
 
-      <div style={{marginTop: "20px", fontWeight: "bold"}}>
-        Card? {cardDraw}
+      <div>
+        Shuffled? {deckGrab.shuffled ? "Yes" : "No"}
       </div>
+
+      <div>
+        <div>
+          Cards remaining: {cardRemains}
+        </div>
+
+        <img src={cardImage} alt="" />
+
+        <div style={{marginTop: "20px", fontWeight: "bold"}}>
+          Card? {cardDraw}
+        </div>
+      </div>
+
+
       <button onClick={drawOne} variant="primary">
         Draw
       </button>
