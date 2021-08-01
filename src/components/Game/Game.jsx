@@ -15,9 +15,17 @@ const Game = () =>
 
   const [cardOneDraw, setCardOneDraw] = useState(null);
   const [cardOneImage, setCardOneImage] = useState(null);
+  const [cardOneValue, setCardOneValue] = useState(null);
 
   const [cardTwoDraw, setCardTwoDraw] = useState(null);
   const [cardTwoImage, setCardTwoImage] = useState(null);
+  const [cardTwoValue, setCardTwoValue] = useState(null);
+
+  const [playerOneScore, setPlayerOneScore] = useState(0);
+  const [playerTwoScore, setPlayerTwoScore] = useState(0);
+
+
+
 
   useEffect(() => {
 
@@ -53,6 +61,19 @@ const Game = () =>
 		}
 	}
 
+  function scoreCompare() {
+
+
+    console.log(cardOneValue);
+    console.log(cardTwoValue);
+
+    if (parseInt(cardOneValue, 10) > parseInt(cardTwoValue, 10)) {
+      setPlayerOneScore(playerOneScore + 1);
+    } else if (parseInt(cardTwoValue, 10) > parseInt(cardOneValue, 10)) {
+      setPlayerTwoScore(playerTwoScore + 1);
+    }
+  }
+
 
   async function drawOne() {
     let response = await axios.get(
@@ -63,11 +84,44 @@ const Game = () =>
         setCardOneDraw(response.data.cards[0].code);
         setCardOneImage(response.data.cards[0].image);
 
+
         setCardTwoDraw(response.data.cards[1].code);
         setCardTwoImage(response.data.cards[1].image);
 
 
-        setCardRemains(response.data.remaining)
+        if (response.data.cards[0].value === "JACK") {
+          setCardOneValue("11");
+        } else if (response.data.cards[0].value === "QUEEN") {
+          setCardOneValue('12');
+        } else if (response.data.cards[0].value === "KING") {
+          setCardOneValue('13');
+        } else if (response.data.cards[0].value === "ACE") {
+          setCardOneValue('14');
+        } else {
+          setCardOneValue(response.data.cards[0].value);
+        }
+
+        if (response.data.cards[1].value === "JACK") {
+          setCardTwoValue("11");
+        } else if (response.data.cards[1].value === "QUEEN") {
+          setCardTwoValue('12');
+        } else if (response.data.cards[1].value === "KING") {
+          setCardTwoValue('13');
+        } else if (response.data.cards[1].value === "ACE") {
+          setCardTwoValue('14');
+        } else {
+          setCardTwoValue(response.data.cards[1].value);
+        }
+
+
+
+        setCardRemains(response.data.remaining);
+      })
+      .then(() => {
+
+      })
+      .then(() => {
+        scoreCompare();
       })
   }
 
@@ -99,6 +153,7 @@ const Game = () =>
 
         <div className="d-flex card-sections">
           <strong>Player 1</strong>
+          <h2>Score: {playerOneScore}</h2>
           <img className="card card1" src={cardOneImage} alt="" />
 
           <div style={{marginTop: "20px", fontWeight: "bold"}}>
@@ -108,6 +163,7 @@ const Game = () =>
         </div>
         <div className="d-flex card-sections">
           <strong>AI</strong>
+          <h2>Score: {playerTwoScore}</h2>
           <img  className="card card2" src={cardTwoImage} alt="" />
 
           <div style={{marginTop: "20px", fontWeight: "bold"}}>
