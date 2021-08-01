@@ -7,7 +7,7 @@ import Login from "./Login/Login";
 import Game from "./Game/Game";
 import {AppContext} from "../libs/contextLib";
 import jwtDecode from "jwt-decode";
-import PrivateRoute from  './Components/Routing/PrivateRoute';
+import PrivateRoute from  './Routing/PrivateRoute';
 
 function App(){
   const [loggedInUser, setLoggedInUser] = useState();
