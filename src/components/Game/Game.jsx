@@ -66,9 +66,13 @@ const Game = () => {
 
 	function resultButton() {
 		if (playerOneScore > playerTwoScore) {
-			axios.put(`http://localhost:5000/api/users/${loggedInUser._id}/win`);
+			axios.put(`http://localhost:5000/api/users/${ loggedInUser._id }/win`);
+			alert(`${loggedInUser.userName} Won`)
+	
 		} else {
-			axios.put(`http://localhost:5000/api/users/${loggedInUser._id}/lose`);
+			axios.put(`http://localhost:5000/api/users/${ loggedInUser._id }/lose`);
+			alert('AI won')
+		
 		}
 	}
 
