@@ -4,6 +4,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { useAppContext } from "../../libs/contextLib";
 import { useHistory } from "react-router-dom";
+import UserAnalytics from "../Analytics/UserAnalytics";
 
 function Home() {
 	const [totalUsers, setTotalUsers] = useState([]);
@@ -52,13 +53,15 @@ function Home() {
 				</div>
 
 				<div className="homepage-sections">
+					<UserAnalytics/>
 					{totalUsers.length > 0 ? (
 						<div className="registered-users">
 							<h3>Registered Users</h3>
 							{totalUsers.map((user, index) => {
 								return (
 									<div key={index}>
-										<p>{user.userName}</p>
+										<strong>username: {user.userName}/ Wins:{ user.wins}</strong>
+
 									</div>
 								);
 							})}
