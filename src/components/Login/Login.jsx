@@ -4,6 +4,7 @@ import UseForm from "../UseForm/UseForm";
 import { Link } from "react-router-dom";
 import { useAppContext } from "../../libs/contextLib";
 import { useHistory } from "react-router-dom";
+import ROOT_URL from '../../apiRoot';
 
 const Login = () => {
 	const { values, handleChange, handleSubmit } = UseForm(login);
@@ -13,7 +14,7 @@ const Login = () => {
 	//After login, take the user to home page and set token valeu in isAuthenticated variable from localStorage
 	async function login() {
 		await axios
-			.post("http://localhost:5000/api/auth", values)
+			.post(`${ROOT_URL}api/auth`, values)
 			.then((response) => {
 				localStorage.setItem("token", response.data);
 				userHasAuthenticated(true);

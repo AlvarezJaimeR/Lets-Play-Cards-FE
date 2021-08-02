@@ -3,6 +3,7 @@ import "./game.css";
 import axios from "axios";
 import { useAppContext } from "../../libs/contextLib";
 import { useHistory } from "react-router-dom";
+import ROOT_URL from '../../apiRoot';
 
 const Game = () => {
 	const { isAuthenticated, userHasAuthenticated } = useAppContext();
@@ -22,6 +23,9 @@ const Game = () => {
 
 	const [playerOneScore, setPlayerOneScore] = useState(0);
 	const [playerTwoScore, setPlayerTwoScore] = useState(0);
+
+  console.log(loggedInUser);
+  console.log(loggedInUser);
 
 	useEffect(() => {
 		async function grab() {
@@ -66,9 +70,9 @@ const Game = () => {
 
 	function resultButton() {
 		if (playerOneScore > playerTwoScore) {
-			axios.put(`http://localhost:5000/api/users/${loggedInUser._id}/win`);
+			axios.put(`${ROOT_URL}api/users/${loggedInUser._id}/win`);
 		} else {
-			axios.put(`http://localhost:5000/api/users/${loggedInUser._id}/lose`);
+			axios.put(`${ROOT_URL}api/users/${loggedInUser._id}/lose`);
 		}
 	}
 
