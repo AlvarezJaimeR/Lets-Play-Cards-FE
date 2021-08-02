@@ -4,7 +4,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { useAppContext } from "../../libs/contextLib";
 import { useHistory } from "react-router-dom";
-import ROOT_URL from '../../apiRoot';
+import {ROOT_URL} from '../../apiRoot';
 
 function Home() {
 	const [totalUsers, setTotalUsers] = useState([]);

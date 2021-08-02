@@ -3,7 +3,7 @@ import "./game.css";
 import axios from "axios";
 import { useAppContext } from "../../libs/contextLib";
 import { useHistory } from "react-router-dom";
-import ROOT_URL from '../../apiRoot';
+import {ROOT_URL} from '../../apiRoot';
 
 const Game = () => {
 	const { isAuthenticated, userHasAuthenticated } = useAppContext();
