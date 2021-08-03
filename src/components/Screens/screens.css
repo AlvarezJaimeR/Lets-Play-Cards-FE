@@ -38,11 +38,14 @@
     margin: 10px;
     object-fit: contain;
     font-size: 15px;
-    background-color: brown;
     border: 2px solid black;
     width: 50%;
     float: right;
     width: auto;
     height: auto;
     text-align: center;
+}
+
+.analytics-container {
+    border: 2px solid red;
 }
