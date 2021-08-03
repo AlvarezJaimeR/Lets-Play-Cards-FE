@@ -25,6 +25,7 @@ const Game = () => {
 	const [playerTwoScore, setPlayerTwoScore] = useState(0);
 
 	const [playerTieCounter, setPlayerTieCounter] = useState(0);
+	const [resultsShown, setResultsShown] = useState(false);
 
 	useEffect(() => {
 		async function grab() {
@@ -52,6 +53,9 @@ const Game = () => {
 					console.log(err);
 				}
 				break;
+			case "calculate":
+				scoreCompare();
+				return setResultsShown(true);
 		}
 	}
 
@@ -77,7 +81,6 @@ const Game = () => {
 	}
 
 	function resultButton() {
-		scoreCompare();
 		if (playerOneScore > playerTwoScore) {
 			axios.put(`${ROOT_URL}api/users/${loggedInUser._id}/win`);
 			alert(`${loggedInUser.userName} Won!!`);
@@ -128,8 +131,6 @@ const Game = () => {
 				}
 
 				setCardRemains(response.data.remaining);
-			})
-			.then(() => {
 				scoreCompare();
 			});
 	}
@@ -174,6 +175,15 @@ const Game = () => {
 						variant="primary"
 						className="btn btn-dark btn-lg">
 						Draw
+					</button>
+				</div>
+			) : resultsShown == false ? (
+				<div className="result-button">
+					<button
+						name="calculate"
+						onClick={(event) => buttonSelection(event)}
+						className="btn btn-lg btn-danger">
+						Calculate Results
 					</button>
 				</div>
 			) : (
