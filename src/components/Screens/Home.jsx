@@ -45,8 +45,8 @@ function Home() {
 			<div className="home">
 				{/* Landing Page */}
 
-				<div className="homepage-sections">
-					<h1>👑 Let's Play Cards</h1>
+				<div className="homepage-sections border rounded">
+					<h1 className="bg-dark rounded p-2 text-light m-3">👑 Let's Play Cards</h1>
 					<div className="image-div">
 						<img
 							className="home-img"
@@ -56,14 +56,14 @@ function Home() {
 					</div>
 				</div>
 
-				<div className="homepage-sections">
+				<div className="homepage-sections border rounded">
 					<UserAnalytics/>
 					{totalUsers.length > 0 ? (
-						<div className="registered-users">
-							<h3>Registered Users</h3>
+						<div className="registered-users p-3 text-left">
+							<h3 className="bg-dark rounded p-2 text-light text-left">Registered Users</h3>
 							{totalUsers.map((user, index) => {
 								return (
-									<div key={index}>
+									<div className="text-left" key={index}>
 										<strong>username: {user.userName}/ Wins:{ user.wins}</strong>
 
 									</div>
@@ -78,27 +78,27 @@ function Home() {
 				</div>
 			</div>
 			{isAuthenticated ? (
-				<div className="play-container">
+				<div className="play-container mx-1">
 					<Link to="/game">
-						<button className="btn btn-success">Lets play Vs AI</button>
+						<button className="btn btn-secondary btn-lg mx-1">Play vs AI</button>
 					</Link>
 					<Link to="/multiplayer">
-						<button className="btn btn-dark">vs Online Player</button>
+						<button className="btn btn-dark btn-lg">Play Online</button>
 					</Link>
 					<button
-						className="btn btn-danger"
+						className="btn btn-danger btn-lg mx-2"
 						name="logout"
 						onClick={(event) => buttonSelection(event)}>
 						Logout
 					</button>
 				</div>
 			) : (
-				<div className="play-container">
+				<div className="play-container mx-3">
 					<Link to="/register">
-						<button className="btn btn-light">Register to Play</button>
+						<button className="btn btn-light btn-lg mx-2">Register to Play</button>
 					</Link>
 					<Link to="/login">
-						<button className="btn btn-dark">Login to Play</button>
+						<button className="btn btn-dark btn-lg">Login to Play</button>
 					</Link>
 					
 				</div>
