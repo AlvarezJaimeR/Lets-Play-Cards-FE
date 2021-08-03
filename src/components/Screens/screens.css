@@ -1,51 +1,51 @@
 * {
-    margin: 0;
-    background-color: yellow
+	margin: 0;
+	background-color: gray;
 }
 
 .home {
-    display: flex;
-    flex-direction: row;
+	display: flex;
+	flex-direction: row;
 }
 
 .homepage-sections {
-    width: 50%;
-    float: left;
-    padding: 20px;
-    border: 2px solid red;
-    margin: 10px;
-    align-items: center;
-    justify-content: center;
+	width: 50%;
+	float: left;
+	padding: 20px;
+	border: 2px solid red;
+	margin: 10px;
+	align-items: center;
+	justify-content: center;
 }
 
 .play-container {
-    padding-left: 35%;
-    width: 100%;
-    border: 2px solid red;
+	padding-left: 35%;
+	width: 100%;
+	border: 2px solid red;
 }
 
 .play-container button {
-    margin: 20px;
+	margin: 20px;
 }
 
 .home-img {
-    width: 300px;
-    height: 400px;
-    padding: 10px;
+	width: 300px;
+	height: 400px;
+	padding: 10px;
 }
 
 .registered-users {
-    margin: 10px;
-    object-fit: contain;
-    font-size: 15px;
-    border: 2px solid black;
-    width: 50%;
-    float: right;
-    width: auto;
-    height: auto;
-    text-align: center;
+	margin: 10px;
+	object-fit: contain;
+	font-size: 15px;
+	border: 2px solid black;
+	width: 50%;
+	float: right;
+	width: auto;
+	height: auto;
+	text-align: center;
 }
 
 .analytics-container {
-    border: 2px solid red;
+	border: 2px solid red;
 }

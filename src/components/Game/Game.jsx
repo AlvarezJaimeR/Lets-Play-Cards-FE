@@ -3,7 +3,7 @@ import "./game.css";
 import axios from "axios";
 import { useAppContext } from "../../libs/contextLib";
 import { useHistory } from "react-router-dom";
-import {ROOT_URL} from '../../apiRoot';
+import { ROOT_URL } from "../../apiRoot";
 
 const Game = () => {
 	const { isAuthenticated, userHasAuthenticated } = useAppContext();
@@ -24,8 +24,7 @@ const Game = () => {
 	const [playerOneScore, setPlayerOneScore] = useState(0);
 	const [playerTwoScore, setPlayerTwoScore] = useState(0);
 
-  console.log(loggedInUser);
-  console.log(loggedInUser);
+	const [playerTieCounter, setPlayerTieCounter] = useState(0);
 
 	useEffect(() => {
 		async function grab() {
@@ -33,7 +32,6 @@ const Game = () => {
 				.get("https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1")
 				.then((response) => {
 					setDeckGrab(response.data);
-
 					return response;
 				});
 		}
@@ -58,24 +56,31 @@ const Game = () => {
 	}
 
 	function scoreCompare() {
-		console.log(cardOneValue);
-		console.log(cardTwoValue);
+		//console.log(cardOneValue);
+		//console.log(cardTwoValue);
 
 		if (parseInt(cardOneValue, 10) > parseInt(cardTwoValue, 10)) {
-			setPlayerOneScore(playerOneScore + 1);
+			setPlayerOneScore(playerOneScore + 1 + playerTieCounter);
+			setPlayerTieCounter(0);
+			//console.log("Player One wins!");
 		} else if (parseInt(cardTwoValue, 10) > parseInt(cardOneValue, 10)) {
-			setPlayerTwoScore(playerTwoScore + 1);
+			setPlayerTwoScore(playerTwoScore + 1 + playerTieCounter);
+			setPlayerTieCounter(0);
+			//console.log("Player Two wins!");
+		} else if (parseInt(cardOneValue, 10) === parseInt(cardTwoValue, 10)) {
+			setPlayerTieCounter(1);
+			//console.log("This is a tie.");
 		}
 	}
 
 	function resultButton() {
+		scoreCompare();
 		if (playerOneScore > playerTwoScore) {
 			axios.put(`${ROOT_URL}api/users/${loggedInUser._id}/win`);
-      alert(`${loggedInUser.userName} Won`)
+			alert(`${loggedInUser.userName} Won`);
 		} else {
 			axios.put(`${ROOT_URL}api/users/${loggedInUser._id}/lose`);
-      alert('AI won')
-
+			alert("AI won");
 		}
 	}
 
@@ -85,7 +90,7 @@ const Game = () => {
 				`https://deckofcardsapi.com/api/deck/${deckGrab.deck_id}/draw/?count=2`
 			)
 			.then((response) => {
-				console.log(response.data);
+				//console.log(response.data);
 				setCardOneDraw(response.data.cards[0].code);
 				setCardOneImage(response.data.cards[0].image);
 
@@ -118,7 +123,6 @@ const Game = () => {
 
 				setCardRemains(response.data.remaining);
 			})
-			.then(() => {})
 			.then(() => {
 				scoreCompare();
 			});
