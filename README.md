@@ -1,6 +1,7 @@
 # WAR -Card Game
 ## Lets-Play-Cards
 ⏩ WAR Game Rules:
+
 ✴ Each player will receive 26 cards, dealt one at a time.
 
 ✴Each player turns up a card at the same time and the player with the higher card wins the round. 
