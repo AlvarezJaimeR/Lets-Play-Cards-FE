@@ -46,7 +46,7 @@ function Home() {
 				{/* Landing Page */}
 
 				<div className="homepage-sections border rounded">
-					<h1 className="bg-dark rounded p-2 text-light m-3">👑 Let's Play Cards</h1>
+					<h1 className="bg-dark rounded p-2 text-light m-3">👑 Let's Play Cards - WAR</h1>
 					<div className="homepage-section-1">
 						<div className="image-div">
 						<img
@@ -56,11 +56,11 @@ function Home() {
 						/>
 					</div>
 					<div className="rules-container">
-							<p><ul><strong>⏩ Rules for the game:</strong></ul>
-							<ul>✴  Each player will receive 26 cards, dealt one at a time.</ul>
+							<p><ul><strong>⏩ WAR Game Rules:</strong></ul>
+							<ul>✴ Each player will receive 26 cards, dealt one at a time.</ul>
 							<ul>✴ Each player turns up a card at the same time and the player with the higher card wins the round. </ul>
-							<ul>✴ If the card is the same value... each player will turn up the next card. If the turned-up card are the same value again then each player will turn up the next card. The player with the higher card wins that round and gets a bonus score for each previous tie. </ul>
-							<ul>✴ The game ends after the 26 rounds have been played.The winner of the game is the player that wins the most rounds</ul>
+							<ul>✴ If the card is the same value... each player will turn up the next card. If the turned-up cards are the same value again then each player will again turn up the next card. The player with the higher card value wins that round and receives a bonus score for each previous tie. </ul>
+							<ul>✴ The game ends after 26 rounds have been played. The winner of the game is the player who wins the most rounds and receives the highest score.</ul>
 
 						</p>
 					</div>

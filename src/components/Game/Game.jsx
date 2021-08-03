@@ -56,6 +56,18 @@ const Game = () => {
 			case "calculate":
 				scoreCompare();
 				return setResultsShown(true);
+      case "again":
+        try {
+        window.location.reload();
+        } catch (err) {
+          console.log(err);
+        }
+      case "quit":
+        try {
+        history.push("/home");
+        } catch (err) {
+          console.log(err);
+        }
 		}
 	}
 
@@ -145,12 +157,19 @@ const Game = () => {
 				<div className="btn btn-block">
 					<strong>Cards remaining:</strong> {cardRemains}
 				</div>
+        <button
+          className="btn btn-warning mx-3"
+          name="quit"
+          onClick={(event) => buttonSelection(event)}>
+          Quit Game
+        </button>
 				<button
 					className="btn btn-danger"
 					name="logout"
 					onClick={(event) => buttonSelection(event)}>
-					Quit Game
+					Log Out
 				</button>
+
 			</div>
 
 			<div className="game-container">
@@ -182,15 +201,21 @@ const Game = () => {
 					<button
 						name="calculate"
 						onClick={(event) => buttonSelection(event)}
-						className="btn btn-lg btn-danger">
+						className="btn btn-danger">
 						Calculate Results
 					</button>
 				</div>
 			) : (
-				<div className="result-button">
-					<button onClick={resultButton} className="btn btn-lg btn-success">
+				<div className="text-center mt-3">
+					<button onClick={resultButton} className="btn btn-lg btn-light text-dark d-inline mx-2">
 						Outcome
 					</button>
+          <button
+            name="again"
+            onClick={(event) => buttonSelection(event)}
+            className="btn btn-lg btn-success d-inline">
+            Play Again
+          </button>
 				</div>
 			)}
 		</div>
