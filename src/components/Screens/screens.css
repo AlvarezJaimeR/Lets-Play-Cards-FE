@@ -9,7 +9,7 @@
 }
 
 .homepage-sections {
-    width: 50%;
+    width: 48%;
     float: left;
     padding: 20px;
     border: 2px solid red;
@@ -21,6 +21,10 @@
 .homepage-section-1 {
     display: flex;
     flex-direction: row;
+}
+
+.homepage-section-2 {
+    width: 49%;
 }
 
 .rules-container {

@@ -68,7 +68,7 @@ function Home() {
 					
 				</div>
 
-				<div className="homepage-sections border rounded">
+				<div className="homepage-sections homepage-section-2 border rounded">
 					<UserAnalytics/>
 					{totalUsers.length > 0 ? (
 						<div className="registered-users p-3 text-left">
