@@ -69,6 +69,9 @@ const Game = () => {
 			//console.log("Player Two wins!");
 		} else if (parseInt(cardOneValue, 10) === parseInt(cardTwoValue, 10)) {
 			setPlayerTieCounter(playerTieCounter + 1);
+			alert(
+				"You tied... Let's hope you win the next one to get an extra point!"
+			);
 			//console.log("This is a tie.");
 		}
 	}
@@ -78,6 +81,9 @@ const Game = () => {
 		if (playerOneScore > playerTwoScore) {
 			axios.put(`${ROOT_URL}api/users/${loggedInUser._id}/win`);
 			alert(`${loggedInUser.userName} Won!!`);
+		} else if (playerOneScore === playerTwoScore) {
+			axios.put(`${ROOT_URL}api/users/${loggedInUser._id}/tie`);
+			alert("You tied against the AI. Better luck next time!");
 		} else {
 			axios.put(`${ROOT_URL}api/users/${loggedInUser._id}/lose`);
 			alert("AI won :(");
