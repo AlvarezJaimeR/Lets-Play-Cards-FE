@@ -4,14 +4,15 @@ import UseForm from "../UseForm/UseForm";
 import { Link } from "react-router-dom";
 import { useAppContext } from "../../libs/contextLib";
 import { useHistory } from "react-router-dom";
-import {ROOT_URL} from '../../apiRoot';
+import { ROOT_URL } from "../../apiRoot";
+import "./Register.css";
 
 const Register = () => {
 	const { errors, values, handleChange, handleSubmit } = UseForm(register);
 	const { userHasAuthenticated, setLoggedInUser } = useAppContext();
 	const history = useHistory();
 
-  console.log(ROOT_URL);
+	console.log(ROOT_URL);
 
 	async function register() {
 		console.log("register button!");
@@ -83,7 +84,10 @@ const Register = () => {
 					{errors.confirmPassword ? `${errors.confirmPassword}` : null}
 				</p>
 				<div>
-					<button type="submit" className="btn btn-primary" style={{margin:'20px'}}>
+					<button
+						type="submit"
+						className="btn btn-primary"
+						style={{ margin: "20px" }}>
 						Submit
 					</button>
 				</div>

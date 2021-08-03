@@ -4,7 +4,8 @@ import UseForm from "../UseForm/UseForm";
 import { Link } from "react-router-dom";
 import { useAppContext } from "../../libs/contextLib";
 import { useHistory } from "react-router-dom";
-import {ROOT_URL} from '../../apiRoot';
+import { ROOT_URL } from "../../apiRoot";
+import "./Login.css";
 
 const Login = () => {
 	const { values, handleChange, handleSubmit } = UseForm(login);
@@ -32,7 +33,8 @@ const Login = () => {
 			<h1 className="login-title">User Login</h1>
 			<form onSubmit={handleSubmit} className="container">
 				<label className="form-label">Email </label>
-				<input className="form-control"
+				<input
+					className="form-control"
 					name="email"
 					value={values.email || ""}
 					onChange={handleChange}
@@ -45,7 +47,10 @@ const Login = () => {
 					className="form-control"
 					onChange={handleChange}
 				/>
-				<button type="submit" className="btn btn-primary" style={{margin:'20px'}}>
+				<button
+					type="submit"
+					className="btn btn-primary"
+					style={{ margin: "20px" }}>
 					Submit
 				</button>
 			</form>
