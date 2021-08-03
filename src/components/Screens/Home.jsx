@@ -56,7 +56,7 @@ function Home() {
 						/>
 					</div>
 					<div className="rules-container">
-							<p><ul><strong>Rules for the game:</strong></ul>
+							<p><ul><strong>⏩ Rules for the game:</strong></ul>
 							<ul>✴  Each player will receive 26 cards, dealt one at a time.</ul>
 							<ul>✴ Each player turns up a card at the same time and the player with the higher card wins the round. </ul>
 							<ul>✴ If the card is the same value... each player will turn up the next card. If the turned-up card are the same value again then each player will turn up the next card. The player with the higher card wins that round and gets a bonus score for each previous tie. </ul>
