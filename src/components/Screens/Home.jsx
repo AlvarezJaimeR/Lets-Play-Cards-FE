@@ -91,15 +91,13 @@ function Home() {
 				</div>
 			</div>
 			{isAuthenticated ? (
-				<div className="play-container mx-1">
+				<div className="play-container mx-5 text-left">
 					<Link to="/game">
-						<button className="btn btn-secondary btn-lg mx-1">Play vs AI</button>
+						<button className="btn btn-secondary btn-lg">Play vs AI</button>
 					</Link>
-					<Link to="/multiplayer">
-						<button className="btn btn-dark btn-lg">Play Online</button>
-					</Link>
+
 					<button
-						className="btn btn-danger btn-lg mx-2"
+						className="btn btn-danger btn-lg mx-0"
 						name="logout"
 						onClick={(event) => buttonSelection(event)}>
 						Logout
