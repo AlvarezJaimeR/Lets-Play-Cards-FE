@@ -169,8 +169,8 @@ const Game = () => {
 				</div>
 			) : (
 				<div className="result-button">
-					<button onClick={resultButton} className="btn btn-success">
-						Result!
+					<button onClick={resultButton} className="btn btn-lg btn-success">
+						See Result!
 					</button>
 				</div>
 			)}
