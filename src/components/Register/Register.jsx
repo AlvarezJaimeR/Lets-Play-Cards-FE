@@ -11,6 +11,8 @@ const Register = () => {
 	const { userHasAuthenticated, setLoggedInUser } = useAppContext();
 	const history = useHistory();
 
+  console.log(ROOT_URL);
+
 	async function register() {
 		console.log("register button!");
 		const { confirmPassword, ...users } = values;

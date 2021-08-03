@@ -68,7 +68,7 @@ const Game = () => {
 			setPlayerTieCounter(0);
 			//console.log("Player Two wins!");
 		} else if (parseInt(cardOneValue, 10) === parseInt(cardTwoValue, 10)) {
-			setPlayerTieCounter(1);
+			setPlayerTieCounter(playerTieCounter + 1);
 			//console.log("This is a tie.");
 		}
 	}
@@ -77,10 +77,10 @@ const Game = () => {
 		scoreCompare();
 		if (playerOneScore > playerTwoScore) {
 			axios.put(`${ROOT_URL}api/users/${loggedInUser._id}/win`);
-			alert(`${loggedInUser.userName} Won`);
+			alert(`${loggedInUser.userName} Won!!`);
 		} else {
 			axios.put(`${ROOT_URL}api/users/${loggedInUser._id}/lose`);
-			alert("AI won");
+			alert("AI won :(");
 		}
 	}
 
@@ -130,57 +130,50 @@ const Game = () => {
 
 	return deckGrab ? (
 		<div>
-			<div className="game-details-container">
+			<div className="game-details-container border rounded">
 				<div className="btn btn-block">
 					<strong> Deck ID:</strong> {deckGrab.deck_id}
 				</div>
-				<div className="btn btn-block">
-					<strong>Shuffled ?</strong> {deckGrab.shuffled ? "Yes" : "No"}
-				</div>
+
 				<div className="btn btn-block">
 					<strong>Cards remaining:</strong> {cardRemains}
 				</div>
 				<button
-					className="btn btn-block btn-sm"
+					className="btn btn-danger"
 					name="logout"
 					onClick={(event) => buttonSelection(event)}>
-					⛔ Quit Game ⛔
+					Quit Game
 				</button>
 			</div>
 
 			<div className="game-container">
-				<div className="d-flex card-sections">
-					<strong>Player 1: {loggedInUser.userName} </strong>
+				<div className="d-flex card-sections border rounded">
+					<h1 className="bg-dark rounded p-2 text-light">
+						Player 1: {loggedInUser.userName}
+					</h1>
 					<h2>Score: {playerOneScore}</h2>
 					<img className="card card1" src={cardOneImage} alt="" />
-					<div style={{ marginTop: "20px", fontWeight: "bold" }}>
-						Card? {cardOneDraw}
-					</div>
 				</div>
-				<div className="d-flex card-sections">
-					<strong>AI</strong>
+				<div className="d-flex card-sections border rounded">
+					<h1 className="bg-dark rounded p-2 text-light px-5">AI</h1>
 					<h2>Score: {playerTwoScore}</h2>
 					<img className="card card2" src={cardTwoImage} alt="" />
-
-					<div style={{ marginTop: "20px", fontWeight: "bold" }}>
-						Card? {cardTwoDraw}
-					</div>
 				</div>
 			</div>
 
 			{cardRemains > 0 || null ? (
-				<div className="draw-button">
+				<div className="draw-button text-center">
 					<button
 						onClick={drawOne}
 						variant="primary"
-						className="btn btn-primary">
+						className="btn btn-dark btn-lg">
 						Draw
 					</button>
 				</div>
 			) : (
 				<div className="result-button">
-					<button onClick={resultButton} className="btn btn-success">
-						Result!
+					<button onClick={resultButton} className="btn btn-lg btn-success">
+						Outcome
 					</button>
 				</div>
 			)}
