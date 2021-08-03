@@ -206,14 +206,14 @@ const Game = () => {
 					</button>
 				</div>
 			) : (
-				<div className="text-center">
-					<button onClick={resultButton} className="btn btn-lg btn-success d-inline mx-2">
+				<div className="text-center mt-3">
+					<button onClick={resultButton} className="btn btn-lg btn-light text-dark d-inline mx-2">
 						Outcome
 					</button>
           <button
             name="again"
             onClick={(event) => buttonSelection(event)}
-            className="btn btn-lg btn-secondary d-inline">
+            className="btn btn-lg btn-success d-inline">
             Play Again
           </button>
 				</div>
