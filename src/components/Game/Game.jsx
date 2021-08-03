@@ -56,6 +56,12 @@ const Game = () => {
 			case "calculate":
 				scoreCompare();
 				return setResultsShown(true);
+      case "quit":
+        try {
+        history.push("/home");
+        } catch (err) {
+          console.log(err);
+        }
 		}
 	}
 
@@ -145,12 +151,19 @@ const Game = () => {
 				<div className="btn btn-block">
 					<strong>Cards remaining:</strong> {cardRemains}
 				</div>
+        <button
+          className="btn btn-warning mx-3"
+          name="quit"
+          onClick={(event) => buttonSelection(event)}>
+          Quit Game
+        </button>
 				<button
 					className="btn btn-danger"
 					name="logout"
 					onClick={(event) => buttonSelection(event)}>
-					Quit Game
+					Log Out
 				</button>
+
 			</div>
 
 			<div className="game-container">
