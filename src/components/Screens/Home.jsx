@@ -47,13 +47,25 @@ function Home() {
 
 				<div className="homepage-sections border rounded">
 					<h1 className="bg-dark rounded p-2 text-light m-3">👑 Let's Play Cards</h1>
-					<div className="image-div">
+					<div className="homepage-section-1">
+						<div className="image-div">
 						<img
 							className="home-img"
 							src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Kings_in_Deck_of_Cards.jpg/220px-Kings_in_Deck_of_Cards.jpg"
 							alt="deck-of-cards"
 						/>
 					</div>
+					<div className="rules-container">
+							<p><ul><strong>Rules for the game:</strong></ul>
+							<ul>✴  Each player will receive 26 cards, dealt one at a time.</ul>
+							<ul>✴ Each player turns up a card at the same time and the player with the higher card wins the round. </ul>
+							<ul>✴ If the card is the same value... each player will turn up the next card. If the turned-up card are the same value again then each player will turn up the next card. The player with the higher card wins that round and gets a bonus score for each previous tie. </ul>
+							<ul>✴ The game ends after the 26 rounds have been played.The winner of the game is the player that wins the most rounds</ul>
+
+						</p>
+					</div>
+					</div>
+					
 				</div>
 
 				<div className="homepage-sections border rounded">
