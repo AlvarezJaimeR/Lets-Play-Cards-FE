@@ -71,10 +71,10 @@ const Game = () => {
 	function resultButton() {
 		if (playerOneScore > playerTwoScore) {
 			axios.put(`${ROOT_URL}api/users/${loggedInUser._id}/win`);
-      alert(`${loggedInUser.userName} Won`)
+      alert(`${loggedInUser.userName} Won!!`)
 		} else {
 			axios.put(`${ROOT_URL}api/users/${loggedInUser._id}/lose`);
-      alert('AI won')
+      alert('AI won :(')
 
 		}
 	}
@@ -170,7 +170,7 @@ const Game = () => {
 			) : (
 				<div className="result-button">
 					<button onClick={resultButton} className="btn btn-lg btn-success">
-						See Result!
+						Outcome
 					</button>
 				</div>
 			)}

@@ -61,7 +61,7 @@ function Home() {
 					{totalUsers.length > 0 ? (
 						<div className="registered-users p-3 text-left">
 							<h3 className="bg-dark rounded p-2 text-light text-left">Registered Users</h3>
-							{totalUsers.map((user, index) => {
+							{totalUsers.slice(0, 7).map((user, index) => {
 								return (
 									<div className="text-left" key={index}>
 										<strong>username: {user.userName}/ Wins:{ user.wins}</strong>
@@ -69,6 +69,7 @@ function Home() {
 									</div>
 								);
 							})}
+              <div>...</div>
 						</div>
 					) : (
 						<div>
