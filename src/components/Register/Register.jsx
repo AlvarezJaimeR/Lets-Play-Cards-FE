@@ -4,6 +4,7 @@ import UseForm from "../UseForm/UseForm";
 import { Link } from "react-router-dom";
 import { useAppContext } from "../../libs/contextLib";
 import { useHistory } from "react-router-dom";
+import {ROOT_URL} from '../../apiRoot';
 
 const Register = () => {
 	const { errors, values, handleChange, handleSubmit } = UseForm(register);
@@ -16,7 +17,7 @@ const Register = () => {
 		console.log(values);
 
 		await axios
-			.post("http://localhost:5000/api/users/", users)
+			.post(`${ROOT_URL}api/users/`, users)
 			.then((response) => {
 				localStorage.setItem("token", response.headers["x-auth-token"]);
 				userHasAuthenticated(true);

@@ -4,7 +4,11 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { useAppContext } from "../../libs/contextLib";
 import { useHistory } from "react-router-dom";
+
 import UserAnalytics from "../Analytics/UserAnalytics";
+
+import {ROOT_URL} from '../../apiRoot';
+
 
 function Home() {
 	const [totalUsers, setTotalUsers] = useState([]);
@@ -16,7 +20,7 @@ function Home() {
 	}, []);
 
 	async function onLoad() {
-		await axios.get("http://localhost:5000/api/users/").then((response) => {
+		await axios.get(`${ROOT_URL}api/users/`).then((response) => {
 			setTotalUsers(response.data);
 		});
 	}
