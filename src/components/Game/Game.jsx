@@ -32,7 +32,7 @@ const Game = () => {
 
   const transitionOne = useTransition([cardOneImage], item => item, {
     from: { opacity: 0, marginLeft: -100, marginRight: 100 },
-    enter: { opacity: 1, marginLeft: 0, marginRight: 0  },
+    enter: { opacity: 1, marginLeft: 0, marginRight: 0 },
     leave: { opacity: 0, transform: 'translate3d(0,-40px,0)', width: '0px', height: "0px" },
     config: { duration: 1000 }
   });
@@ -196,24 +196,32 @@ const Game = () => {
 					</h1>
 					<h2>Score: {playerOneScore}</h2>
 
+          { cardOneImage !== null ? (
+            transitionOne.map(({item, props}) => (
+              <animated.div>
+                <animated.img className="" src={item} style={props} alt="" />
+              </animated.div>
 
-					{transitionOne.map(({item, props}) => (
-            <animated.div>
-              <animated.img className="card card1" src={item} style={props} alt="" />
-            </animated.div>
+            ))) :
+            <img className="card card1" alt="" />
 
-          ))}
+          }
+
 
 				</div>
 				<div className="d-flex card-sections border rounded">
 					<h1 className="bg-dark rounded p-2 text-light px-5">AI</h1>
 					<h2>Score: {playerTwoScore}</h2>
-         {transitionTwo.map(({item, props}) => (
-            <animated.div>
-              <animated.img className="card card2" src={item} style={props} alt="" />
-            </animated.div>
+          { cardTwoImage !== null ? (
+            transitionTwo.map(({item, props}) => (
+              <animated.div>
+                <animated.img className="" src={item} style={props} alt="" />
+              </animated.div>
 
-          ))}
+            ))) :
+            <img className="card card2" alt="" />
+
+          }
 				</div>
 			</div>
 

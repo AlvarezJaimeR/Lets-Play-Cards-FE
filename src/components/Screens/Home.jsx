@@ -45,68 +45,49 @@ function Home() {
 			<div className="home">
 				{/* Landing Page */}
 
-				<div className="homepage-sections border rounded">
-					<h1 className="bg-dark rounded p-2 text-light m-3">👑 Let's Play Cards - WAR</h1>
-					<div className="homepage-section-1">
-						<div className="image-div">
-						<img
-							className="home-img"
-							src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Kings_in_Deck_of_Cards.jpg/220px-Kings_in_Deck_of_Cards.jpg"
-							alt="deck-of-cards"
-						/>
-					</div>
-					<div className="rules-container">
-							<p><ul><strong>⏩ WAR Game Rules:</strong></ul>
-							<ul>✴ Each player will receive 26 cards, dealt one at a time.</ul>
-							<ul>✴ Each player turns up a card at the same time and the player with the higher card wins the round. </ul>
-							<ul>✴ If the card is the same value... each player will turn up the next card. If the turned-up cards are the same value again then each player will again turn up the next card. The player with the higher card value wins that round and receives a bonus score for each previous tie. </ul>
-							<ul>✴ The game ends after 26 rounds have been played. The winner of the game is the player who wins the most rounds and receives the highest score.</ul>
+				<div className="homepage-sections first border rounded">
+					<h1 className="bg-dark rounded p-2 px-3 text-light m-3">👑 Let's Play Cards - WAR 👑</h1>
 
-						</p>
+					<div className="rules-container py-2 rounded border text-left">
+            <div className="trans-content">
+  						<h2 className="text-center"><strong>WAR Game Rules:</strong></h2>
+              <ul>
+                <li>Each player will receive 26 cards, dealt one at a time.</li>
+  						  <li>Each player turns up a card at the same time and the player with the higher card wins the round. </li>
+  						  <li>If the card is the same value... each player will turn up the next card. If the turned-up cards are the same value again then each player will again turn up the next card. The player with the higher card value wins that round and receives a bonus score for each previous tie. </li>
+  						  <li>The game ends after 26 rounds have been played. The winner of the game is the player who wins the most rounds and receives the highest score.</li>
+              </ul>
+
+            </div>
+
+
 					</div>
-					</div>
+
 					
 				</div>
 
 				<div className="homepage-sections homepage-section-2 border rounded">
-					<UserAnalytics/>
-					{totalUsers.length > 0 ? (
-						<div className="registered-users p-3 text-left">
-							<h3 className="bg-dark rounded p-2 text-light text-left">Registered Users</h3>
-							{totalUsers.slice(0, 7).map((user, index) => {
-								return (
-									<div className="text-left" key={index}>
-										<strong>username: {user.userName}/ Wins:{ user.wins}</strong>
+					<UserAnalytics props={totalUsers.data} />
 
-									</div>
-								);
-							})}
-              <div>...</div>
-						</div>
-					) : (
-						<div>
-							<h2>Loading...</h2>
-						</div>
-					)}
 				</div>
 			</div>
 			{isAuthenticated ? (
 				<div className="play-container mx-5 text-left">
 					<Link to="/game">
-						<button className="btn btn-secondary btn-lg">Play vs AI</button>
+						<button className="btn btn-secondary btn-lg mx-2">Play vs AI</button>
 					</Link>
 
 					<button
-						className="btn btn-danger btn-lg mx-0"
+						className="btn btn-danger btn-lg mx-2"
 						name="logout"
 						onClick={(event) => buttonSelection(event)}>
 						Logout
 					</button>
 				</div>
 			) : (
-				<div className="play-container mx-3">
+				<div className="play-container mx-1">
 					<Link to="/register">
-						<button className="btn btn-light btn-lg mx-2">Register to Play</button>
+						<button className="btn btn-light btn-lg mx-1">Register to Play</button>
 					</Link>
 					<Link to="/login">
 						<button className="btn btn-dark btn-lg">Login to Play</button>

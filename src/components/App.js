@@ -50,7 +50,7 @@ function App(){
 
   return (
     !currentlyAuthenticating && (
-   <div>
+   <div >
       <AppContext.Provider
       value={{
         isAuthenticated,
