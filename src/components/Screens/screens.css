@@ -1,59 +1,81 @@
 * {
-	margin: 0;
-	background-color: #7bb7f7;
+    margin: 0;
+    background-color: #7bb7f7;
 }
 
 .home {
-	display: flex;
-	flex-direction: row;
+    display: flex;
+    flex-direction: row;
 }
 
 .homepage-sections {
-	width: 50%;
-	float: left;
-	padding: 20px;
-	border: 2px solid red;
-	margin: 10px;
-	align-items: center;
-	justify-content: center;
+    width: 48%;
+    float: left;
+    padding: 20px;
+    border: 2px solid red;
+    margin: 10px;
+    align-items: center;
+    justify-content: center;
 }
 
 .homepage-section-1 {
-	display: flex;
-	flex-direction: row;
+    display: flex;
+    flex-direction: row;
+}
+
+.homepage-section-2 {
+    width: 49%;
 }
 
 .rules-container {
-	font-size: 13px;
+    font-size: 13px
+}
+
+.homepage-section-1 {
+    display: flex;
+    flex-direction: row;
+}
+
+.rules-container {
+    font-size: 13px;
 }
 
 .play-container {
-	padding-left: 35%;
-	width: 100%;
+    padding-left: 35%;
+    width: 100%;
 }
 
 .play-container button {
-	margin: 20px;
+    margin: 20px;
 }
 
 .home-img {
-	width: 250px;
-	height: 300px;
-	padding: 18px;
-	display: block;
+    width: 250px;
+    height: 300px;
+    padding: 18px;
+    display: block;
 }
 
 .registered-users {
-	margin: 10px;
-	object-fit: contain;
-	font-size: 15px;
-	border: 2px solid black;
-	width: 50%;
-	width: auto;
-	height: auto;
-	text-align: center;
+    margin: 10px;
+    object-fit: contain;
+    font-size: 15px;
+    border: 2px solid black;
+    width: 50%;
+    float: right;
+    width: auto;
+    height: auto;
+    text-align: center;
+    margin: 10px;
+    object-fit: contain;
+    font-size: 15px;
+    border: 2px solid black;
+    width: 50%;
+    width: auto;
+    height: auto;
+    text-align: center;
 }
 
 .analytics-container {
-	padding: 20px;
+    padding: 20px;
 }
