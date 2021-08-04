@@ -178,13 +178,13 @@ const Game = () => {
           className="btn btn-warning mx-3"
           name="quit"
           onClick={(event) => buttonSelection(event)}>
-          <strong>Quit Game</strong>
+          Quit Game
         </button>
 				<button
 					className="btn btn-danger"
 					name="logout"
 					onClick={(event) => buttonSelection(event)}>
-					<strong>Log Out</strong>
+					Log Out
 				</button>
 
 			</div>
