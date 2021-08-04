@@ -81,7 +81,7 @@ function Home() {
 						className="btn btn-danger btn-lg mx-3 font-link"
 						name="logout"
 						onClick={(event) => buttonSelection(event)}>
-						<strong>Logout</strong>
+						Logout
 					</button>
 				</div>
 			) : (
