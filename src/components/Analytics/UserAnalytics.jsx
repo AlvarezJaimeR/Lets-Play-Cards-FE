@@ -16,7 +16,7 @@ const UserAnalytics = ({}) => {
 
     return isAuthenticated ? (
           <div className="analytics-container p-3">
-            <div className="card" style={{ width: "35rem", height: "25rem" }}>
+            <div className="card" style={{ width: "35rem", height: "28rem" }}>
               <div className="row no-gutters">
                 <div className="col-sm-5">
                   <img className="card-img-top" src={ace} alt="ace" />
@@ -27,10 +27,10 @@ const UserAnalytics = ({}) => {
                     <h2 class="card-title"><strong>My Stats</strong></h2>
                   </div>
                   <ul class="list-group rounded list-group-flush">
-                    <li class="list-group-item"><strong>Name:</strong> {loggedInUser.userName}</li>
-                    <li class="list-group-item"><strong>Total Games:</strong> {loggedInUser.games}</li>
-                    <li class="list-group-item"><strong>Total Wins:</strong> {loggedInUser.wins}</li>
-                    <li class="list-group-item"><strong>Total Loses:</strong> {loggedInUser.loses}</li>
+                    <li class="list-group-item"><strong>Name :</strong> {loggedInUser.userName}</li>
+                    <li class="list-group-item"><strong>Total Games :</strong> {loggedInUser.games}</li>
+                    <li class="list-group-item"><strong>Total Wins :</strong> {loggedInUser.wins}</li>
+                    <li class="list-group-item"><strong>Total Loses :</strong> {loggedInUser.loses}</li>
                   </ul>
                 </div>
               </div>
@@ -38,7 +38,7 @@ const UserAnalytics = ({}) => {
           </div>
         ) : (
           <div className="analytics-container p-3">
-            <div className="card" style={{width: "35rem", height: "25rem" }}>
+            <div className="card" style={{width: "35rem", height: "28rem" }}>
               <div className="row no-gutters">
                 <div className="col-sm-5">
                   <img className="card-img-top" src={ace} alt="ace" />

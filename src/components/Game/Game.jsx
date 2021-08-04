@@ -165,26 +165,26 @@ const Game = () => {
 	}
 
 	return deckGrab ? (
-		<div>
+		<div className="font-link">
 			<div className="game-details-container border rounded">
 				<div className="btn btn-block">
-					<strong> Deck ID:</strong> {deckGrab.deck_id}
+					<strong> Deck ID :</strong> {deckGrab.deck_id}
 				</div>
 
 				<div className="btn btn-block">
-					<strong>Cards remaining:</strong> {cardRemains}
+					<strong>Cards remaining :</strong> {cardRemains}
 				</div>
         <button
           className="btn btn-warning mx-3"
           name="quit"
           onClick={(event) => buttonSelection(event)}>
-          Quit Game
+          <strong>Quit Game</strong>
         </button>
 				<button
 					className="btn btn-danger"
 					name="logout"
 					onClick={(event) => buttonSelection(event)}>
-					Log Out
+					<strong>Log Out</strong>
 				</button>
 
 			</div>
@@ -192,9 +192,9 @@ const Game = () => {
 			<div className="game-container">
 				<div className="d-flex card-sections border rounded">
 					<h1 className="bg-dark rounded p-2 text-light">
-						Player 1: {loggedInUser.userName}
+						Player 1 : {loggedInUser.userName}
 					</h1>
-					<h2>Score: {playerOneScore}</h2>
+					<h2>Score : {playerOneScore}</h2>
 
           { cardOneImage !== null ? (
             transitionOne.map(({item, props}) => (
@@ -211,7 +211,7 @@ const Game = () => {
 				</div>
 				<div className="d-flex card-sections border rounded">
 					<h1 className="bg-dark rounded p-2 text-light px-5">AI</h1>
-					<h2>Score: {playerTwoScore}</h2>
+					<h2>Score : {playerTwoScore}</h2>
           { cardTwoImage !== null ? (
             transitionTwo.map(({item, props}) => (
               <animated.div>
@@ -231,7 +231,7 @@ const Game = () => {
 						onClick={drawOne}
 						variant="primary"
 						className="btn btn-dark btn-lg">
-						Draw
+						<strong>Draw</strong>
 					</button>
 				</div>
 			) : resultsShown == false ? (
@@ -240,13 +240,13 @@ const Game = () => {
 						name="calculate"
 						onClick={(event) => buttonSelection(event)}
 						className="btn btn-danger">
-						Calculate Results
+						Show Results
 					</button>
 				</div>
 			) : (
 				<div className="text-center mt-3">
 					<button onClick={resultButton} className="btn btn-lg btn-light text-dark d-inline mx-2">
-						Outcome
+						<strong>Outcome</strong>
 					</button>
           <button
             name="again"

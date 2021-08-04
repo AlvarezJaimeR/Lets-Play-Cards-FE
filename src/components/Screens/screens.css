@@ -3,6 +3,23 @@
 
 }
 
+h1 {
+  line-height: 48px;
+  margin: 24px 0;
+}
+
+h2 {
+  line-height: 48px;
+  margin: 24px 0;
+}
+
+p {
+  line-height: 24px;
+  margin: 24px 0;
+}
+
+
+
 .home {
     display: flex;
     flex-direction: row;
@@ -37,12 +54,18 @@
 
 .rules-container {
   background: rgb(0, 0, 0);
-  background: rgba(0, 0, 0, 0.5); /* Black background with 0.5 opacity */
+  background: rgba(0, 0, 0, 0.7); /* Black background with 0.5 opacity */
   color: #f1f1f1; /* Grey text */
   width: 100%; /* Full width */
   padding: 20px; /* Some padding */
+  line-height: 26px;
+  margin: 24px 0;
 
+}
 
+.list-group {
+  line-height: 32px;
+  margin: 24px 0;
 }
 
 .homepage-section-1 {
@@ -99,4 +122,9 @@
     width: 100%;
     color: black;
 }
+
+.font-link {
+  font-family: 'Poppins', sans-serif;
+}
+
 

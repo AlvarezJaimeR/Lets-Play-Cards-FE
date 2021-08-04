@@ -42,11 +42,11 @@ function Home() {
 
 	return (
 		<Fragment>
-			<div className="home">
+			<div className="home font-link">
 				{/* Landing Page */}
 
 				<div className="homepage-sections first border rounded">
-					<h1 className="bg-dark rounded p-2 px-3 text-light m-3">👑 Let's Play Cards - WAR 👑</h1>
+					<h1 className="bg-dark rounded p-2 px-3 text-light m-2">👑 Let's Play Cards - WAR 👑</h1>
 
 					<div className="rules-container py-2 rounded border text-left">
             <div className="trans-content">
@@ -74,23 +74,23 @@ function Home() {
 			{isAuthenticated ? (
 				<div className="play-container mx-5 text-left">
 					<Link to="/game">
-						<button className="btn btn-secondary btn-lg mx-2">Play vs AI</button>
+						<button className="btn btn-secondary btn-lg mx-2 font-link"><strong>Play vs AI</strong></button>
 					</Link>
 
 					<button
-						className="btn btn-danger btn-lg mx-2"
+						className="btn btn-danger btn-lg mx-3 font-link"
 						name="logout"
 						onClick={(event) => buttonSelection(event)}>
-						Logout
+						<strong>Logout</strong>
 					</button>
 				</div>
 			) : (
-				<div className="play-container mx-1">
+				<div className="play-container mx-0">
 					<Link to="/register">
-						<button className="btn btn-light btn-lg mx-1">Register to Play</button>
+						<button className="btn btn-light btn-lg mx-0 font-link">Register to Play</button>
 					</Link>
 					<Link to="/login">
-						<button className="btn btn-dark btn-lg">Login to Play</button>
+						<button className="btn btn-dark btn-lg font-link">Login to Play</button>
 					</Link>
 					
 				</div>
