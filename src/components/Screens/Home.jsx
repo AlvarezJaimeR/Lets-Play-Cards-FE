@@ -7,8 +7,7 @@ import { useHistory } from "react-router-dom";
 
 import UserAnalytics from "../Analytics/UserAnalytics";
 
-import {ROOT_URL} from '../../apiRoot';
-
+import { ROOT_URL } from "../../apiRoot";
 
 function Home() {
 	const [totalUsers, setTotalUsers] = useState([]);
@@ -46,35 +45,48 @@ function Home() {
 				{/* Landing Page */}
 
 				<div className="homepage-sections first border rounded">
-					<h1 className="bg-dark rounded p-2 px-3 text-light m-2">👑 Let's Play Cards - WAR 👑</h1>
+					<h1 className="bg-dark rounded p-2 px-3 text-light m-2">
+						👑 Let's Play Cards - WAR 👑
+					</h1>
 
 					<div className="rules-container py-2 rounded border text-left">
-            <div className="trans-content">
-  						<h2 className="text-center"><strong>WAR Game Rules:</strong></h2>
-              <ul>
-                <li>Each player will receive 26 cards, dealt one at a time.</li>
-  						  <li>Each player turns up a card at the same time and the player with the higher card wins the round. </li>
-  						  <li>If the card is the same value... each player will turn up the next card. If the turned-up cards are the same value again then each player will again turn up the next card. The player with the higher card value wins that round and receives a bonus score for each previous tie. </li>
-  						  <li>The game ends after 26 rounds have been played. The winner of the game is the player who wins the most rounds and receives the highest score.</li>
-              </ul>
-
-            </div>
-
-
+						<div className="trans-content">
+							<h2 className="text-center">
+								<strong>WAR Game Rules:</strong>
+							</h2>
+							<ul>
+								<li>Each player will receive 26 cards, dealt one at a time.</li>
+								<li>
+									Each player turns up a card at the same time and the player
+									with the higher card wins the round.{" "}
+								</li>
+								<li>
+									If the card is the same value... each player will turn up the
+									next card. If the turned-up cards are the same value again
+									then each player will again turn up the next card. The player
+									with the higher card value wins that round and receives a
+									bonus score for each previous tie.{" "}
+								</li>
+								<li>
+									The game ends after 26 rounds have been played. The winner of
+									the game is the player who wins the most rounds and receives
+									the highest score.
+								</li>
+							</ul>
+						</div>
 					</div>
-
-					
 				</div>
 
 				<div className="homepage-sections homepage-section-2 border rounded">
 					<UserAnalytics props={totalUsers.data} />
-
 				</div>
 			</div>
 			{isAuthenticated ? (
 				<div className="play-container mx-5 text-left">
 					<Link to="/game">
-						<button className="btn btn-secondary btn-lg mx-2 font-link"><strong>Play vs AI</strong></button>
+						<button className="btn btn-secondary btn-lg mx-2 font-link">
+							<strong>Play vs AI</strong>
+						</button>
 					</Link>
 
 					<button
@@ -87,12 +99,15 @@ function Home() {
 			) : (
 				<div className="play-container mx-0">
 					<Link to="/register">
-						<button className="btn btn-light btn-lg mx-0 font-link">Register to Play</button>
+						<button className="btn btn-light btn-lg mx-0 font-link">
+							Register to Play
+						</button>
 					</Link>
 					<Link to="/login">
-						<button className="btn btn-dark btn-lg font-link">Login to Play</button>
+						<button className="btn btn-dark btn-lg font-link">
+							Login to Play
+						</button>
 					</Link>
-					
 				</div>
 			)}
 		</Fragment>
