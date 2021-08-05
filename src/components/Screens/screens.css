@@ -32,23 +32,14 @@ p {
 }
 
 .homepage-sections {
-    width: 48%;
-    float: left;
+
     padding: 20px;
 
-    margin: 10px;
+
     align-items: center;
     justify-content: center;
 }
 
-.homepage-section-1 {
-    display: flex;
-    flex-direction: row;
-}
-
-.homepage-section-2 {
-    width: 49%;
-}
 
 
 
@@ -56,8 +47,7 @@ p {
   background: rgb(0, 0, 0);
   background: rgba(0, 0, 0, 0.7); /* Black background with 0.5 opacity */
   color: #f1f1f1; /* Grey text */
-  width: 100%; /* Full width */
-  padding: 20px; /* Some padding */
+  padding: 18px; /* Some padding */
   line-height: 26px;
   margin: 24px 0;
 
@@ -112,14 +102,15 @@ p {
 .analytics-container .card {
     padding: 20px;
     background: rgba(0, 0, 0, 0.3);
-    width: 100%;
+
     color: #f1f1f1;
+
 }
 
 .analytics-container li {
-    padding: 20px;
+    padding: 16px;
     background-color: #D3D3D3;
-    width: 100%;
+
     color: black;
 }
 

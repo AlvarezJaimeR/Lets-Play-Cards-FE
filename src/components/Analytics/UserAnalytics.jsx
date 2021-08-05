@@ -18,11 +18,11 @@ const UserAnalytics = ({}) => {
           <div className="analytics-container p-3">
             <div className="card" style={{ width: "35rem", height: "28rem" }}>
               <div className="row no-gutters">
-                <div className="col-sm-5">
-                  <img className="card-img-top" src={ace} alt="ace" />
+                <div className="col-sm-5 col-xs-5 ">
+                  <img className="card-img-top img-responsive" style={{ width: "auto"}} src={ace} alt="ace" />
 
                 </div>
-                <div className="col-sm-7">
+                <div className="col-sm-7 col-xs-7 ">
                   <div class="card-body">
                     <h2 class="card-title"><strong>My Stats</strong></h2>
                   </div>
