@@ -41,13 +41,13 @@ function Home() {
 
 	return (
 		<Fragment>
-      <div className="container">
-  			<div className="home font-link row">
+
+  			<div className="home font-link row" >
   				{/* Landing Page */}
 
-  				<div className="col col-sm-12 col-lg-6">
-            <div className="col-lg-12 col-sm-12 col-xs-12 homepage-sections first border rounded">
-    					<h1 className="bg-dark rounded px-3 text-light  ">👑 Let's Play Cards - WAR 👑</h1>
+  				<div className="col-12 col-xs-12 col-sm-12 col-lg-6 d-flex">
+            <div className="col-lg-12 col-sm-12 col-xs-12 homepage-sections first border rounded flex-fill">
+    					<h1 className="bg-dark rounded px-4 text-light">👑 Let's Play Cards - WAR 👑</h1>
 
     					<div className="rules-container rounded border text-left">
                 <div className="trans-content">
@@ -58,19 +58,13 @@ function Home() {
       						  <li>If the card is the same value... each player will turn up the next card. If the turned-up cards are the same value again then each player will again turn up the next card. The player with the higher card value wins that round and receives a bonus score for each previous tie. </li>
       						  <li>The game ends after 26 rounds have been played. The winner of the game is the player who wins the most rounds and receives the highest score.</li>
                   </ul>
-
                 </div>
-
-
     					</div>
-
-
     				</div>
-
             </div>
 
-  				<div className="col col-sm-12 col-lg-6">
-            <div className="col-lg-12 homepage-sections homepage-section-2 border rounded row col">
+  				<div className="col-12 col-sm-12 col-xs-12 col-lg-6 d-flex">
+            <div className="col-lg-12 border rounded row no-gutters col flex-fill">
   					   <UserAnalytics props={totalUsers.data} />
 
             </div>
@@ -101,8 +95,6 @@ function Home() {
 
   				</div>
   			)}
-
-      </div>
 
 		</Fragment>
 	);
