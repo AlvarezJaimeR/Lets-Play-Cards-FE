@@ -4,14 +4,12 @@ import axios from "axios";
 import { useAppContext } from "../../libs/contextLib";
 import { useHistory } from "react-router-dom";
 import { ROOT_URL } from "../../apiRoot";
-import { useTransition, animated } from 'react-spring';
+import { useTransition, animated } from "react-spring";
 
 const Game = () => {
 	const { isAuthenticated, userHasAuthenticated } = useAppContext();
 	const { loggedInUser, setLoggedInUser } = useAppContext();
 	const history = useHistory();
-
-
 
 	const [deckGrab, setDeckGrab] = useState(null);
 	const [cardRemains, setCardRemains] = useState(52);
@@ -30,19 +28,29 @@ const Game = () => {
 	const [playerTieCounter, setPlayerTieCounter] = useState(0);
 	const [resultsShown, setResultsShown] = useState(false);
 
-  const transitionOne = useTransition([cardOneImage], item => item, {
-    from: { opacity: 0, marginLeft: -100, marginRight: 100 },
-    enter: { opacity: 1, marginLeft: 0, marginRight: 0 },
-    leave: { opacity: 0, transform: 'translate3d(0,-40px,0)', width: '0px', height: "0px" },
-    config: { duration: 1000 }
-  });
+	const transitionOne = useTransition([cardOneImage], (item) => item, {
+		from: { opacity: 0, marginLeft: -100, marginRight: 100 },
+		enter: { opacity: 1, marginLeft: 0, marginRight: 0 },
+		leave: {
+			opacity: 0,
+			transform: "translate3d(0,-40px,0)",
+			width: "0px",
+			height: "0px",
+		},
+		config: { duration: 1000 },
+	});
 
-  const transitionTwo = useTransition([cardTwoImage], item => item, {
-    from: { opacity: 0, marginLeft: -100, marginRight: 100 },
-    enter: { opacity: 1, marginLeft: 0, marginRight: 0  },
-    leave: { opacity: 0, transform: 'translate3d(0,-40px,0)', width: '0px', height: "0px" },
-    config: { duration: 1000 }
-  });
+	const transitionTwo = useTransition([cardTwoImage], (item) => item, {
+		from: { opacity: 0, marginLeft: -100, marginRight: 100 },
+		enter: { opacity: 1, marginLeft: 0, marginRight: 0 },
+		leave: {
+			opacity: 0,
+			transform: "translate3d(0,-40px,0)",
+			width: "0px",
+			height: "0px",
+		},
+		config: { duration: 1000 },
+	});
 
 	useEffect(() => {
 		async function grab() {
@@ -73,18 +81,18 @@ const Game = () => {
 			case "calculate":
 				scoreCompare();
 				return setResultsShown(true);
-      case "again":
-        try {
-        window.location.reload();
-        } catch (err) {
-          console.log(err);
-        }
-      case "quit":
-        try {
-        history.push("/home");
-        } catch (err) {
-          console.log(err);
-        }
+			case "again":
+				try {
+					window.location.reload();
+				} catch (err) {
+					console.log(err);
+				}
+			case "quit":
+				try {
+					history.push("/home");
+				} catch (err) {
+					console.log(err);
+				}
 		}
 	}
 
@@ -174,19 +182,18 @@ const Game = () => {
 				<div className="btn btn-block">
 					<strong>Cards remaining :</strong> {cardRemains}
 				</div>
-        <button
-          className="btn btn-warning mx-3"
-          name="quit"
-          onClick={(event) => buttonSelection(event)}>
-          Quit Game
-        </button>
+				<button
+					className="btn btn-warning mx-3"
+					name="quit"
+					onClick={(event) => buttonSelection(event)}>
+					Quit Game
+				</button>
 				<button
 					className="btn btn-danger"
 					name="logout"
 					onClick={(event) => buttonSelection(event)}>
 					Log Out
 				</button>
-
 			</div>
 
 			<div className="game-container">
@@ -196,32 +203,28 @@ const Game = () => {
 					</h1>
 					<h2>Score : {playerOneScore}</h2>
 
-          { cardOneImage !== null ? (
-            transitionOne.map(({item, props}) => (
-              <animated.div>
-                <animated.img className="" src={item} style={props} alt="" />
-              </animated.div>
-
-            ))) :
-            <img className="card card1" alt="" />
-
-          }
-
-
+					{cardOneImage !== null ? (
+						transitionOne.map(({ item, props }) => (
+							<animated.div>
+								<animated.img className="" src={item} style={props} alt="" />
+							</animated.div>
+						))
+					) : (
+						<img className="card card1" alt="" />
+					)}
 				</div>
 				<div className="d-flex card-sections border rounded">
 					<h1 className="bg-dark rounded p-2 text-light px-5">AI</h1>
 					<h2>Score : {playerTwoScore}</h2>
-          { cardTwoImage !== null ? (
-            transitionTwo.map(({item, props}) => (
-              <animated.div>
-                <animated.img className="" src={item} style={props} alt="" />
-              </animated.div>
-
-            ))) :
-            <img className="card card2" alt="" />
-
-          }
+					{cardTwoImage !== null ? (
+						transitionTwo.map(({ item, props }) => (
+							<animated.div>
+								<animated.img className="" src={item} style={props} alt="" />
+							</animated.div>
+						))
+					) : (
+						<img className="card card2" alt="" />
+					)}
 				</div>
 			</div>
 
@@ -245,15 +248,17 @@ const Game = () => {
 				</div>
 			) : (
 				<div className="text-center mt-3">
-					<button onClick={resultButton} className="btn btn-lg btn-light text-dark d-inline mx-2">
+					<button
+						onClick={resultButton}
+						className="btn btn-lg btn-light text-dark d-inline mx-2">
 						<strong>Outcome</strong>
 					</button>
-          <button
-            name="again"
-            onClick={(event) => buttonSelection(event)}
-            className="btn btn-lg btn-success d-inline">
-            Play Again
-          </button>
+					<button
+						name="again"
+						onClick={(event) => buttonSelection(event)}
+						className="btn btn-lg btn-success d-inline">
+						Play Again
+					</button>
 				</div>
 			)}
 		</div>

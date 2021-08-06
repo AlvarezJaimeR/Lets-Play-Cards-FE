@@ -1,0 +1,14 @@
+.table-title {
+	text-align: center;
+}
+
+.table-content {
+	text-align: center;
+	border-style: solid;
+	margin-top: 2px !important;
+}
+
+.full-user-table {
+	border-style: solid;
+	margin-top: 50px !important;
+}
