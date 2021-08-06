@@ -41,8 +41,8 @@ const UserAnalytics = ({}) => {
 						</ul>
 					</div>
 					<div>
-						<Link to="/highScores">
-							<button className="btn-light">Highscores!</button>
+						<Link to="/otherUsers">
+							<button className="btn-light">Other Users!</button>
 						</Link>
 					</div>
 				</div>
