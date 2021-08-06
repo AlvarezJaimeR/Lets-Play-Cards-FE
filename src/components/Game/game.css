@@ -1,16 +1,16 @@
 .game-details-container {
-	width: 98%;
+
 	display: flex;
-	border: 2px solid red;
-	margin: 10px;
+
+
 }
 
 .card-sections {
 	width: 50%;
-	float: left;
+
 	padding: 20px;
-	border: 2px solid red;
-	margin: 10px;
+
+
 	align-items: center;
 	justify-content: center;
 }

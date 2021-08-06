@@ -33,7 +33,7 @@ const Game = () => {
 		enter: { opacity: 1, marginLeft: 0, marginRight: 0 },
 		leave: {
 			opacity: 0,
-			transform: "translate3d(0,-40px,0)",
+			transform: "translate3d(100%, 0, 0)",
 			width: "0px",
 			height: "0px",
 		},
@@ -41,11 +41,11 @@ const Game = () => {
 	});
 
 	const transitionTwo = useTransition([cardTwoImage], (item) => item, {
-		from: { opacity: 0, marginLeft: -100, marginRight: 100 },
+		from: { opacity: 0, marginLeft: 100, marginRight: -100 },
 		enter: { opacity: 1, marginLeft: 0, marginRight: 0 },
 		leave: {
 			opacity: 0,
-			transform: "translate3d(0,-40px,0)",
+			transform: "translate3d(100%, 0, 0)",
 			width: "0px",
 			height: "0px",
 		},
@@ -174,10 +174,8 @@ const Game = () => {
 
 	return deckGrab ? (
 		<div className="font-link">
-			<div className="game-details-container border rounded">
-				<div className="btn btn-block">
-					<strong> Deck ID :</strong> {deckGrab.deck_id}
-				</div>
+			<div className="game-details-container border m-2 rounded">
+
 
 				<div className="btn btn-block">
 					<strong>Cards remaining :</strong> {cardRemains}
@@ -197,39 +195,37 @@ const Game = () => {
 			</div>
 
 			<div className="game-container">
-				<div className="d-flex card-sections border rounded">
-					<h1 className="bg-dark rounded p-2 text-light">
-						Player 1 : {loggedInUser.userName}
-					</h1>
+				<div className="d-flex card-sections mx-1 border rounded">
+					<h1 className="bg-dark rounded p-2 text-light px-5">{loggedInUser.userName}</h1>
 					<h2>Score : {playerOneScore}</h2>
 
 					{cardOneImage !== null ? (
 						transitionOne.map(({ item, props }) => (
 							<animated.div>
-								<animated.img className="" src={item} style={props} alt="" />
+								<animated.img className="img-fluid" src={item} style={props} alt="" />
 							</animated.div>
 						))
 					) : (
-						<img className="card card1" alt="" />
+						<img className="" alt="" />
 					)}
 				</div>
-				<div className="d-flex card-sections border rounded">
+				<div className="d-flex card-sections mx-1 border rounded">
 					<h1 className="bg-dark rounded p-2 text-light px-5">AI</h1>
 					<h2>Score : {playerTwoScore}</h2>
 					{cardTwoImage !== null ? (
 						transitionTwo.map(({ item, props }) => (
-							<animated.div>
-								<animated.img className="" src={item} style={props} alt="" />
+							<animated.div >
+								<animated.img className="img-fluid" src={item} style={props} alt="" />
 							</animated.div>
 						))
 					) : (
-						<img className="card card2" alt="" />
+						<img className="" alt="" />
 					)}
 				</div>
 			</div>
 
 			{cardRemains > 0 || null ? (
-				<div className="draw-button text-center">
+				<div className="draw-button text-center mt-2">
 					<button
 						onClick={drawOne}
 						variant="primary"
@@ -247,16 +243,16 @@ const Game = () => {
 					</button>
 				</div>
 			) : (
-				<div className="text-center mt-3">
+				<div className="text-center m-5">
 					<button
 						onClick={resultButton}
-						className="btn btn-lg btn-light text-dark d-inline mx-2">
+						className="btn btn-lg btn-light text-dark d-inline m-2">
 						<strong>Outcome</strong>
 					</button>
 					<button
 						name="again"
 						onClick={(event) => buttonSelection(event)}
-						className="btn btn-lg btn-success d-inline">
+						className="btn btn-lg btn-success d-inline m-2">
 						Play Again
 					</button>
 				</div>
