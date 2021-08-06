@@ -48,7 +48,7 @@ function Home() {
 
   				<div className="col col-sm-12 col-lg-6">
             <div className="col-lg-12 col-sm-12 col-xs-12 homepage-sections first border rounded">
-    					<h1 className="bg-dark rounded px-3 text-light ">👑 Let's Play Cards - WAR 👑</h1>
+    					<h1 className="bg-dark rounded px-3 text-light  ">👑 Let's Play Cards - WAR 👑</h1>
 
     					<div className="rules-container rounded border text-left">
                 <div className="trans-content">
