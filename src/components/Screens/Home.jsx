@@ -7,8 +7,7 @@ import { useHistory } from "react-router-dom";
 
 import UserAnalytics from "../Analytics/UserAnalytics";
 
-import {ROOT_URL} from '../../apiRoot';
-
+import { ROOT_URL } from "../../apiRoot";
 
 function Home() {
 	const [totalUsers, setTotalUsers] = useState([]);
@@ -104,6 +103,7 @@ function Home() {
   			)}
 
       </div>
+
 		</Fragment>
 	);
 }
