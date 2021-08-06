@@ -2,9 +2,13 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { ROOT_URL } from "../../apiRoot";
 import "./OtherUsers.css";
+import { useHistory } from "react-router-dom";
+import { useAppContext } from "../../libs/contextLib";
 
 const OtherUsers = () => {
 	const [totalUsers, setTotalUsers] = useState([]);
+	const { userHasAuthenticated } = useAppContext();
+	const history = useHistory();
 
 	useEffect(() => {
 		onLoad();
@@ -16,8 +20,48 @@ const OtherUsers = () => {
 		});
 	}
 
+	function buttonClick(event) {
+		switch (event.target.name) {
+			case "home":
+				try {
+					history.push("/home");
+				} catch (err) {
+					console.log(err);
+				}
+				break;
+			case "quit":
+				try {
+					console.log("logging out...");
+					localStorage.removeItem("token");
+					userHasAuthenticated(false);
+
+					history.push("/home");
+				} catch (err) {
+					console.log(err);
+				}
+				break;
+		}
+	}
+
 	return totalUsers.length > 0 ? (
 		<div className="container full-user-table">
+			<div className="row">
+				<div className="col-11"></div>
+				<div className="col-1">
+					<button
+						onClick={(event) => buttonClick(event)}
+						name="home"
+						className="btn-light">
+						Home
+					</button>
+					<button
+						onClick={(event) => buttonClick(event)}
+						name="quit"
+						className="btn-dark">
+						Logout
+					</button>
+				</div>
+			</div>
 			<div className="row">
 				<div className="col table-title">
 					<h1>All Users</h1>
