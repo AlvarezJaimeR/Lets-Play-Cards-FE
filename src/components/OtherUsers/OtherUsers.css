@@ -3,12 +3,19 @@
 }
 
 .table-content {
-	text-align: center;
-	border-style: solid;
-	margin-top: 2px !important;
+	border-radius: 40px !important;
+	background-color: rgb(187, 184, 184) !important;
+}
+
+.card-content {
+	margin-top: 40px;
 }
 
 .full-user-table {
 	border-style: solid;
 	margin-top: 50px !important;
+}
+
+.logout-button {
+	float: right;
 }
