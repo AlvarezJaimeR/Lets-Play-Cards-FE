@@ -65,7 +65,7 @@ const OtherUsers = () => {
 			</div>
 			<div className="row">
 				<div className="col table-title">
-					<h1>All Users</h1>
+					<h1>ALL USERS</h1>
 				</div>
 			</div>
 			<div className="row">
@@ -74,10 +74,10 @@ const OtherUsers = () => {
 						className="col-sm-4 d-flex align-items-stretch card table-content"
 						key={index}>
 						<div className="card-body text-center card-content">
-							<strong>Username: {user.userName}</strong>
-							<p>Total Games Played: {user.games}</p>
-							<p>Wins: {user.wins}</p>
-							<p>Loses: {user.loses}</p>
+							<h2>Username: {user.userName}</h2>
+							<h4>Total Games Played: {user.games}</h4>
+							<h4>Wins: {user.wins}</h4>
+							<h4>Loses: {user.loses}</h4>
 						</div>
 					</div>
 				))}
