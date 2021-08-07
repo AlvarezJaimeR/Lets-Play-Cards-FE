@@ -8,7 +8,7 @@ import Game from "./Game/Game";
 import {AppContext} from "../libs/contextLib";
 import jwtDecode from "jwt-decode";
 import PrivateRoute from  './Routing/PrivateRoute';
-import OtherUsers from "./OtherUsers/OtherUsers";
+import AllUsers from "./AllUsers/AllUsers";
 
 function App(){
   const [loggedInUser, setLoggedInUser] = useState();
@@ -69,7 +69,7 @@ function App(){
            <Route path="/register" component={Register} />
           <Route path="/login" component={Login} />
           <Route path="/game" component={Game} />
-          <Route path="/otherUsers" component={OtherUsers} />
+          <Route path="/allUsers" component={AllUsers} />
         </Switch>
       </AppContext.Provider>
     </div>

@@ -175,8 +175,6 @@ const Game = () => {
 	return deckGrab ? (
 		<div className="font-link">
 			<div className="game-details-container border m-2 rounded">
-
-
 				<div className="btn btn-block">
 					<strong>Cards remaining :</strong> {cardRemains}
 				</div>
@@ -196,13 +194,20 @@ const Game = () => {
 
 			<div className="game-container">
 				<div className="d-flex card-sections mx-1 border rounded">
-					<h1 className="bg-dark rounded p-2 text-light px-5">{loggedInUser.userName}</h1>
+					<h1 className="bg-dark rounded p-2 text-light px-5">
+						{loggedInUser.userName}
+					</h1>
 					<h2>Score : {playerOneScore}</h2>
 
 					{cardOneImage !== null ? (
 						transitionOne.map(({ item, props }) => (
 							<animated.div>
-								<animated.img className="img-fluid" src={item} style={props} alt="" />
+								<animated.img
+									className="img-fluid"
+									src={item}
+									style={props}
+									alt=""
+								/>
 							</animated.div>
 						))
 					) : (
@@ -214,8 +219,13 @@ const Game = () => {
 					<h2>Score : {playerTwoScore}</h2>
 					{cardTwoImage !== null ? (
 						transitionTwo.map(({ item, props }) => (
-							<animated.div >
-								<animated.img className="img-fluid" src={item} style={props} alt="" />
+							<animated.div>
+								<animated.img
+									className="img-fluid"
+									src={item}
+									style={props}
+									alt=""
+								/>
 							</animated.div>
 						))
 					) : (

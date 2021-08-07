@@ -1,13 +1,14 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { ROOT_URL } from "../../apiRoot";
-import "./OtherUsers.css";
+import "./AllUsers.css";
 import { useHistory } from "react-router-dom";
 import { useAppContext } from "../../libs/contextLib";
+import star from "../../images/Star.png";
 
-const OtherUsers = () => {
+const AllUsers = () => {
 	const [totalUsers, setTotalUsers] = useState([]);
-	const { userHasAuthenticated } = useAppContext();
+	const { userHasAuthenticated, loggedInUser } = useAppContext();
 	const history = useHistory();
 
 	useEffect(() => {
@@ -71,14 +72,28 @@ const OtherUsers = () => {
 			<div className="row">
 				{totalUsers.map((user, index) => (
 					<div
-						className="col-sm-4 d-flex align-items-stretch card table-content"
+						className="col-sm-4 d-flex align-items-center justify-content-center"
 						key={index}>
-						<div className="card-body text-center card-content">
-							<h2>Username: {user.userName}</h2>
-							<h4>Total Games Played: {user.games}</h4>
-							<h4>Wins: {user.wins}</h4>
-							<h4>Loses: {user.loses}</h4>
-						</div>
+						{user.userName == loggedInUser.userName ? (
+							<div className="card table-content">
+								<div className="card-body text-center">
+									<h2>Username: {user.userName}</h2>
+									<h4>Total Games Played: {user.games}</h4>
+									<h4>Wins: {user.wins}</h4>
+									<h4>Loses: {user.loses}</h4>
+									<img src={star} alt="star" className="img-star" />
+								</div>
+							</div>
+						) : (
+							<div className="card table-content">
+								<div className="card-body text-center">
+									<h2>Username: {user.userName}</h2>
+									<h4>Total Games Played: {user.games}</h4>
+									<h4>Wins: {user.wins}</h4>
+									<h4>Loses: {user.loses}</h4>
+								</div>
+							</div>
+						)}
 					</div>
 				))}
 			</div>
@@ -90,4 +105,4 @@ const OtherUsers = () => {
 	);
 };
 
-export default OtherUsers;
+export default AllUsers;

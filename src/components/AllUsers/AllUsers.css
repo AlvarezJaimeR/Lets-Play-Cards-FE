@@ -7,13 +7,13 @@
 	background-color: rgb(187, 184, 184) !important;
 }
 
-.card-content {
-	margin-top: 40px;
+.img-star {
+	height: 70px;
 }
 
 .full-user-table {
 	border-style: solid;
-	margin-top: 50px !important;
+	margin-top: 20px !important;
 }
 
 .logout-button {
