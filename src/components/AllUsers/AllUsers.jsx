@@ -45,21 +45,21 @@ const AllUsers = () => {
 	}
 
 	return totalUsers.length > 0 ? (
-		<div className="container full-user-table">
+		<div className="container full-user-table border rounded">
 			<div className="row">
-				<div className="col-6">
+				<div className="col-6 mt-2">
 					<button
 						onClick={(event) => buttonClick(event)}
 						name="home"
-						className="btn-light">
+						className="btn btn-light">
 						Home
 					</button>
 				</div>
-				<div className="col-6">
+				<div className="col-6 mt-2">
 					<button
 						onClick={(event) => buttonClick(event)}
 						name="quit"
-						className="btn-dark logout-button">
+						className="btn btn-dark logout-button">
 						Logout
 					</button>
 				</div>
@@ -72,7 +72,7 @@ const AllUsers = () => {
 			<div className="row">
 				{totalUsers.map((user, index) => (
 					<div
-						className="col-sm-4 d-flex align-items-center justify-content-center"
+						className="col-sm-4 d-flex align-items-center justify-content-center mb-2"
 						key={index}>
 						{user.userName == loggedInUser.userName ? (
 							<div className="card table-content">
