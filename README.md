@@ -10,7 +10,7 @@
 
 ✴ The game ends after 26 rounds have been played. The winner of the game is the player who wins the most rounds and receives the highest score.
 
-### **Give it a try here**  [Play War - the card game](https://quiet-sierra-fe.herokuapp.com/)
+### **Give it a try here**  [Play War - the card game](http://www.letsplaycards.digital/)
 
 ## To run it on your local machine:
  #### 1. Clone this frontend repo via your CLI:
